@@ -37,6 +37,7 @@ public class FlyChallenge : Challenge
 
         if (startX > Screen.width / 2)
         {
+            direction = -1;
             Vector3 newScale = this.transform.localScale;
             newScale.x *= -1;
             this.transform.localScale = newScale;
@@ -48,7 +49,7 @@ public class FlyChallenge : Challenge
     // Start is called before the first frame update
     void Start()
     {
-        Setup();
+        //Setup();
     }
 
     // Update is called once per frame
@@ -77,9 +78,14 @@ public class FlyChallenge : Challenge
 
     private void Move(bool towardsFlower, float speed)
     {
-        int change = towardsFlower ? direction : direction * -1;
+        int change = towardsFlower ? 1 : -1;
 
         Vector3 vector = new Vector3(Screen.width / 2, Screen.height / 2, 1) - this.transform.position * change;
+        if (!towardsFlower && direction < 0)
+        {
+            vector.x *= -1;
+        }
+
         vector.Normalize();
         vector *= Time.deltaTime * speed;
         this.transform.position += vector;

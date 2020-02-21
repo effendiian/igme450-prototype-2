@@ -34,7 +34,7 @@ public class ChallengeCreator : MonoBehaviour
         time += Time.deltaTime;
         buffer -= Time.deltaTime;
         
-        if (time > 15)
+        if (time > 10)
         {
             CreateChallenge();
         } 
@@ -56,6 +56,7 @@ public class ChallengeCreator : MonoBehaviour
 
         Challenge script = newChallenge.GetComponent<Challenge>();
         script.SetCreator(this);
+        script.Setup();
         currentChallenges.Add(script);
 
         newChallenge.SetActive(true);
