@@ -12,6 +12,10 @@ public class FlyChallenge : Challenge
     private int startPosition = 100;
     private int direction = 1;
 
+    public int currentAngle;
+    public Vector3 currentDestination;
+    public float timeTraveled;
+
     private bool isSetup = false; //only for debugging
 
     public override void Setup()
@@ -60,7 +64,7 @@ public class FlyChallenge : Challenge
             case FlyState.Entering:
                 Move(true, enteringSpeed);
 
-                if (Mathf.Abs(transform.position.x - (Screen.width / 2)) < 25)
+                if (Mathf.Abs(transform.position.x - (Screen.width / 2)) < 25 && Mathf.Abs(transform.position.y - (Screen.height / 2)) < 25)
                 {
                     state = FlyState.Sitting;
                 }
@@ -78,6 +82,7 @@ public class FlyChallenge : Challenge
 
     private void Move(bool towardsFlower, float speed)
     {
+
         int change = towardsFlower ? 1 : -1;
 
         Vector3 vector = new Vector3(Screen.width / 2, Screen.height / 2, 1) - this.transform.position * change;
@@ -88,6 +93,14 @@ public class FlyChallenge : Challenge
 
         vector.Normalize();
         vector *= Time.deltaTime * speed;
+
+        timeTraveled += Time.deltaTime;
+        if (timeTraveled > 0.5)
+        {
+            currentAngle = Random.Range(-70, 70);
+            timeTraveled = 0;
+        }
+        vector = Quaternion.Euler(0, 0, currentAngle) * vector;
         this.transform.position += vector;
     }
 
