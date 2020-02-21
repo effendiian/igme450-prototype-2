@@ -52,7 +52,7 @@ public class ChallengeCreator : MonoBehaviour
 
         int choice = Random.Range(0, challenges.Count);
         GameObject newChallenge = Instantiate(challenges[choice]);
-        newChallenge.transform.parent = canvas.transform;
+        newChallenge.transform.SetParent(canvas.transform, false);
 
         Challenge script = newChallenge.GetComponent<Challenge>();
         script.SetCreator(this);
