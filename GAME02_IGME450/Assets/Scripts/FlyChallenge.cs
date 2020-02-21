@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyChallenge : MonoBehaviour
+public class FlyChallenge : Challenge
 {
     FlyState state = FlyState.Entering;
 
@@ -35,6 +35,10 @@ public class FlyChallenge : MonoBehaviour
             case FlyState.Leaving:
                 Move(false, leavingSpeed);
 
+                if (IsOffScreen())
+                {
+                    Destroy(this.gameObject);
+                }
                 break;
         }
     }
@@ -49,15 +53,23 @@ public class FlyChallenge : MonoBehaviour
         this.transform.position += vector;
     }
 
+    private bool IsOffScreen()
+    {
+        return this.gameObject.transform.position.x < -100 || this.gameObject.transform.position.x > Screen.width + 100 ||
+            this.gameObject.transform.position.y < -100 || this.gameObject.transform.position.y > Screen.width + 100;
+    }
+
 
     public void Click()
     {
         state = FlyState.Leaving;
+        this.Complete();
     }
 
     private void OnMouseDown()
     {
         state = FlyState.Leaving;
+        this.Complete();
     }
 }
 
