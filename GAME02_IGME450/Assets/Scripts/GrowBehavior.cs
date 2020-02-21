@@ -57,6 +57,11 @@ public class GrowBehavior : MonoBehaviour
                     timer = 0;
                     currentState++;
                 }
+                else
+                {
+                    float size = 5 + (timer / 5) * 10;
+                    stalk.sizeDelta = new Vector2(size, size);
+                }
                 break;
             case LifeState.Sapling:
                 if (timer > 20)

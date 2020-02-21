@@ -63,6 +63,11 @@ public class FlyChallenge : Challenge
             case FlyState.Entering:
                 Move(true, enteringSpeed);
 
+                if (!active && IsOnScreen())
+                {
+                    Activate();
+                }
+
                 if (Mathf.Abs(transform.position.x - (Screen.width / 2)) < 25 && Mathf.Abs(transform.position.y - (Screen.height / 2)) < 25)
                 {
                     state = FlyState.Sitting;
@@ -106,6 +111,12 @@ public class FlyChallenge : Challenge
     {
         return this.gameObject.transform.position.x < -100 || this.gameObject.transform.position.x > Screen.width + 100 ||
             this.gameObject.transform.position.y < -100 || this.gameObject.transform.position.y > Screen.width + 100;
+    }
+
+    private bool IsOnScreen()
+    {
+        return this.gameObject.transform.position.x > -30 && this.gameObject.transform.position.x < Screen.width - 10 &&
+            this.gameObject.transform.position.y > 10 && this.gameObject.transform.position.y < Screen.width - 30;
     }
 
 

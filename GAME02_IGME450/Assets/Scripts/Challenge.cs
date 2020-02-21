@@ -5,10 +5,17 @@ using UnityEngine;
 public abstract class Challenge: MonoBehaviour
 {
    private ChallengeCreator challengeCreator;
+   protected bool active;
 
    public void SetCreator(ChallengeCreator challengeCreator)
     {
         this.challengeCreator = challengeCreator;
+    }
+
+    public void Activate()
+    {
+        challengeCreator.ActivateChallenge();
+        active = true;
     }
 
    public void Complete()

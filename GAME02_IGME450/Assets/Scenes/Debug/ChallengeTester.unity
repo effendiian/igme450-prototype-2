@@ -381,6 +381,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5915492563800087427}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1584333206 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -2898126982989386095, guid: d276ee335c73be74fbd1d2a573d93eb7,
+    type: 3}
+  m_PrefabInstance: {fileID: 5915492563800087427}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81ac665b8f096244cb07d7de8fa95333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5915492563800087427
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -567,6 +579,16 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 403857758}
+    - target: {fileID: 3196940732109405861, guid: 9b6fb8a7b6ec55c4b871c77fb3156fb8,
+        type: 3}
+      propertyPath: flower
+      value: 
+      objectReference: {fileID: 1584333206}
+    - target: {fileID: 3196940732109405861, guid: 9b6fb8a7b6ec55c4b871c77fb3156fb8,
+        type: 3}
+      propertyPath: chance
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 7712759009706366119, guid: 9b6fb8a7b6ec55c4b871c77fb3156fb8,
         type: 3}
       propertyPath: m_Name
