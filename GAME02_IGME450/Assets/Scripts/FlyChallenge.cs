@@ -11,12 +11,11 @@ public class FlyChallenge : Challenge
 
     private int startPosition = 100;
     private int direction = 1;
-
+    
     public int currentAngle;
     public Vector3 currentDestination;
     public float timeTraveled;
-
-    private bool isSetup = false; //only for debugging
+    
 
     public override void Setup()
     {
@@ -82,7 +81,6 @@ public class FlyChallenge : Challenge
 
     private void Move(bool towardsFlower, float speed)
     {
-
         int change = towardsFlower ? 1 : -1;
 
         Vector3 vector = new Vector3(Screen.width / 2, Screen.height / 2, 1) - this.transform.position * change;
