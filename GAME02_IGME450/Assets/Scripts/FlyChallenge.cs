@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyChallenge : MonoBehaviour
+public class FlyChallenge : Challenge
 {
     FlyState state = FlyState.Entering;
 
@@ -11,12 +11,45 @@ public class FlyChallenge : MonoBehaviour
 
     private int startPosition = 100;
     private int direction = 1;
-    
+
+    private bool isSetup = false; //only for debugging
+
+    public override void Setup()
+    {
+        float startX, startY;
+
+        //Come from the sides
+        if (Random.Range(0, 100) <= 70)
+        {
+            startY = Random.Range(0, Screen.height + 100);
+            if (Random.Range(0, 100) > 50) //Left
+            {
+                startX = -100;
+            } else //Right
+            {
+                startX = Screen.width + 100;
+            }
+        } else //Come from the top
+        {
+            startX = Random.Range(-100, Screen.width + 100);
+            startY = Screen.height + 100;
+        }
+
+        if (startX > Screen.width / 2)
+        {
+            direction = -1;
+            Vector3 newScale = this.transform.localScale;
+            newScale.x *= -1;
+            this.transform.localScale = newScale;
+        }
+
+        this.gameObject.transform.position = new Vector3(startX, startY, 0);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        int startX = startPosition * -1;
-        this.gameObject.transform.position = new Vector3(startX, Screen.height / 2, 0);
+        //Setup();
     }
 
     // Update is called once per frame
@@ -35,29 +68,46 @@ public class FlyChallenge : MonoBehaviour
             case FlyState.Leaving:
                 Move(false, leavingSpeed);
 
+                if (IsOffScreen())
+                {
+                    Destroy(this.gameObject);
+                }
                 break;
         }
     }
 
     private void Move(bool towardsFlower, float speed)
     {
-        int change = towardsFlower ? direction : direction * -1;
+        int change = towardsFlower ? 1 : -1;
 
         Vector3 vector = new Vector3(Screen.width / 2, Screen.height / 2, 1) - this.transform.position * change;
+        if (!towardsFlower && direction < 0)
+        {
+            vector.x *= -1;
+        }
+
         vector.Normalize();
         vector *= Time.deltaTime * speed;
         this.transform.position += vector;
+    }
+
+    private bool IsOffScreen()
+    {
+        return this.gameObject.transform.position.x < -100 || this.gameObject.transform.position.x > Screen.width + 100 ||
+            this.gameObject.transform.position.y < -100 || this.gameObject.transform.position.y > Screen.width + 100;
     }
 
 
     public void Click()
     {
         state = FlyState.Leaving;
+        this.Complete();
     }
 
     private void OnMouseDown()
     {
         state = FlyState.Leaving;
+        this.Complete();
     }
 }
 
