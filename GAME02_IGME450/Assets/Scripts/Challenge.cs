@@ -15,4 +15,6 @@ public abstract class Challenge: MonoBehaviour
     {
         challengeCreator.CompleteChallenge(this);
     }
+
+    public abstract void Setup();
 }

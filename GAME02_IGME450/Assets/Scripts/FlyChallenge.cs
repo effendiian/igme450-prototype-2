@@ -11,12 +11,44 @@ public class FlyChallenge : Challenge
 
     private int startPosition = 100;
     private int direction = 1;
-    
+
+    private bool isSetup = false; //only for debugging
+
+    public override void Setup()
+    {
+        float startX, startY;
+
+        //Come from the sides
+        if (Random.Range(0, 100) <= 70)
+        {
+            startY = Random.Range(0, Screen.height + 100);
+            if (Random.Range(0, 100) > 50) //Left
+            {
+                startX = -100;
+            } else //Right
+            {
+                startX = Screen.width + 100;
+            }
+        } else //Come from the top
+        {
+            startX = Random.Range(-100, Screen.width + 100);
+            startY = Screen.height + 100;
+        }
+
+        if (startX > Screen.width / 2)
+        {
+            Vector3 newScale = this.transform.localScale;
+            newScale.x *= -1;
+            this.transform.localScale = newScale;
+        }
+
+        this.gameObject.transform.position = new Vector3(startX, startY, 0);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        int startX = startPosition * -1;
-        this.gameObject.transform.position = new Vector3(startX, Screen.height / 2, 0);
+        Setup();
     }
 
     // Update is called once per frame
