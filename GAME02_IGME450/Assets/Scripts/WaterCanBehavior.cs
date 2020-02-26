@@ -20,7 +20,7 @@ public class WaterCanBehavior : MonoBehaviour
     void Update()
     {
 
-        //mybe change this to simply check phone oreientation instead of rate
+        //maybe change this to simply check phone oreientation instead of rate
 
         //checking to see if user rotates phone
         if(Input.gyro.rotationRate.x > 5)
