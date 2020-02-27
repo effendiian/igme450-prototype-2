@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enteringSpeed: 200
-  leavingSpeed: 600
+  leavingSpeed: 750
   currentAngle: 0
   currentDestination: {x: 0, y: 0, z: 0}
   timeTraveled: 0

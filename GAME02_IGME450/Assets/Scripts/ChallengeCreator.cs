@@ -12,7 +12,7 @@ public class ChallengeCreator : MonoBehaviour
     private List<Challenge> currentChallenges = new List<Challenge>();
 
     float time = 0;
-    float buffer = 1.5f;
+    float buffer = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -74,6 +74,6 @@ public class ChallengeCreator : MonoBehaviour
         if (flower)
             flower.challengeActive = false;
         this.currentChallenges.Remove(challenge);
-        buffer = 3;
+        buffer = 1;
     }
 }
