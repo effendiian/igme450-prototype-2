@@ -15,10 +15,11 @@ public class ChallengeCreator : MonoBehaviour
     float time = 0;
     float buffer = 0;
 
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     private void FixedUpdate()
