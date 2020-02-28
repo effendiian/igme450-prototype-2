@@ -12,6 +12,7 @@ public class WaterCanBehavior : Challenge
     private bool runTimer;  //Variable to know if the timer should be running
     public GameObject water;    //Variable to hold water object
     private GameObject waterDrop;   //variable to hold the created water
+    public float rotationControl;   //variable to hold the accleration needed to trigger the can
 
 
 
@@ -32,27 +33,40 @@ public class WaterCanBehavior : Challenge
             runTimer = true;
             SolvingChallenge();
         }
-
-
-#else
-        
-
-        
+ 
 #endif
 
+        //might have to adjust rotation control number to make it more or less sensitive 
 
         rotSpeed = Input.acceleration.x;
-        if (rotSpeed > 5)
+        //checking to see if the user tilts the phone
+        if (rotSpeed > rotationControl)
         {
             runTimer = true;
             SolvingChallenge();
         }
 
+        //if code above is backwards use this 
+        /*
+         *  if (rotSpeed < -rotationControl)
+        {
+            runTimer = true;
+            SolvingChallenge();
+        }
+         * 
+         * if code above is wrong axis try checking the z axis
+         * 
+         * 
+         * 
+         */
+
+        //if the bool is true, incrmenting the timer
         if (runTimer)
         {
             pourTimer += Time.deltaTime;
         }
 
+        //if the timer reaches 4, finshing the challenge
         if(pourTimer >= 4)
         {
             FinishChallenge();
