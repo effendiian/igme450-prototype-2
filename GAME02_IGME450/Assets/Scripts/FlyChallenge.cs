@@ -7,7 +7,7 @@ public class FlyChallenge : Challenge
     FlyState state = FlyState.Entering;
 
     public float enteringSpeed = 200f;
-    public float leavingSpeed = 400f;
+    public float leavingSpeed = 750f;
 
     private int startPosition = 100;
     private int direction = 1;
@@ -63,14 +63,15 @@ public class FlyChallenge : Challenge
             case FlyState.Entering:
                 Move(true, enteringSpeed);
 
-                if (!active && IsOnScreen())
-                {
-                    Activate();
-                }
+                //if (!active && IsOnScreen())
+                //{
+                //    Activate();
+                //}
 
                 if (Mathf.Abs(transform.position.x - (Screen.width / 2)) < 25 && Mathf.Abs(transform.position.y - (Screen.height / 2)) < 25)
                 {
                     state = FlyState.Sitting;
+                    Activate();
                 }
                 break;
             case FlyState.Leaving:
