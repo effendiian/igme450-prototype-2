@@ -33,9 +33,7 @@ public class WaterCanBehavior : Challenge
             runTimer = true;
             SolvingChallenge();
         }
- 
-#endif
-
+#else
         //might have to adjust rotation control number to make it more or less sensitive 
 
         rotSpeed = Input.acceleration.x;
@@ -59,6 +57,11 @@ public class WaterCanBehavior : Challenge
          * 
          * 
          */
+
+
+#endif
+
+
 
         //if the bool is true, incrmenting the timer
         if (runTimer)
