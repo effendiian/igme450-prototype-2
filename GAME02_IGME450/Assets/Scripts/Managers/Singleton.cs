@@ -22,14 +22,9 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     private static object m_ThreadLocker = new object();
 
     /// <summary>
-    /// Constructor can only be used internally.
-    /// </summary>
-    protected Singleton() { }
-
-    /// <summary>
     /// GameObject with manager components.
     /// </summary>
-    private static GameObject m_Managers;
+    private static GameObject m_Manager;
 
     /// <summary>
     /// Singleton instance.
@@ -39,26 +34,35 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     /// <summary>
     /// Manager GameObject.
     /// </summary>
-    protected static GameObject Managers
+    protected static GameObject Manager
     {
         get
         {
             if(m_Garbage)
             {
-                Debug.LogWarning($"[Singleton] '{typeof(T)}' Instance already destroyed. Returning null.");
+                Debug.LogWarning($"[Singleton] Instance '{typeof(T)}' already destroyed. Returning null.");
                 return null;
             }
 
-            if (!m_Managers)
+            if (!m_Manager)
             {
                 // If null, search for tagged object.
-                m_Managers = GameObject.FindGameObjectWithTag("Manager");
+                GameObject[] managers = GameObject.FindGameObjectsWithTag("Manager");
+                for(int i = 0; i < managers.Length; i++)
+                {
+                    if (managers[i].GetComponent<T>())
+                    {
+                        // If component exists on object, we can keep it.
+                        m_Manager = managers[i];
+                        break;
+                    }
+                }
 
                 // If still null, create and tag the object.
-                if (!m_Managers)
+                if (!m_Manager)
                 {
                     // Create and tag the Manager object.
-                    m_Managers = new GameObject("Managers")
+                    m_Manager = new GameObject($"{typeof(T)}")
                     {
                         tag = "Manager"
                     };
@@ -66,7 +70,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
             }
 
             // Return the reference.
-            return m_Managers;
+            return m_Manager;
         }
     }
 
@@ -90,13 +94,24 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                     if (!m_Instance)
                     {
                         // Find tagged manager GameObject to attach Singleton to.
-                        m_Instance = Managers.GetOrAddComponent<T>();
+                        m_Instance = Manager.GetOrAddComponent<T>();
                     }
                 }
 
                 // Return reference.
                 return m_Instance;
             }
+        }
+    }
+
+    /// <summary>
+    /// Return the Singleton{T} name.
+    /// </summary>
+    protected virtual string Name
+    {
+        get
+        {
+            return $"'{typeof(T)}' [Singleton]";
         }
     }
 
@@ -109,5 +124,5 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     /// Flag as inaccessible once destroying.
     /// </summary>
     private void OnDestroy() => m_Garbage = true;
-
+    
 }
