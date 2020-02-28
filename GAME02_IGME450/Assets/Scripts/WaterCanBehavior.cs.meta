@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 85f6bdd42ca4dde4a88ef51ed2c0bd7c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - dryDirt: {fileID: 7584508975861360118, guid: e31330ea62af2c542a620ab78b5d82d6,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
