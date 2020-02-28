@@ -6,7 +6,7 @@ public class FlyChallenge : Challenge
 {
     FlyState state = FlyState.Entering;
 
-    public float enteringSpeed = 200f;
+    public float enteringSpeed = 250f;
     public float leavingSpeed = 750f;
 
     private int startPosition = 100;
@@ -15,6 +15,9 @@ public class FlyChallenge : Challenge
     public int currentAngle;
     public Vector3 currentDestination;
     public float timeTraveled;
+
+    RectTransform flowerRect;
+    private Vector3 finalDestination;
     
 
     public override void Setup()
@@ -22,9 +25,9 @@ public class FlyChallenge : Challenge
         float startX, startY;
 
         //Come from the sides
-        if (Random.Range(0, 100) <= 70)
+        if (Random.Range(0, 100) <= 80)
         {
-            startY = Random.Range(0, Screen.height + 100);
+            startY = Random.Range(50, Screen.height + 100);
             if (Random.Range(0, 100) > 50) //Left
             {
                 startX = -100;
@@ -47,6 +50,16 @@ public class FlyChallenge : Challenge
         }
 
         this.gameObject.transform.position = new Vector3(startX, startY, 0);
+
+        //Get flower rect transform
+        flowerRect = flower.GetComponent<RectTransform>();
+        finalDestination = new Vector3(Screen.width / 2, startY + Random.Range(-30, 30), 1);
+
+        //If we're aiming above the flower, lower
+        if (finalDestination.y > flowerRect.sizeDelta.y)
+        {
+            finalDestination.y = Random.Range((flowerRect.sizeDelta.y * 4) / 5, flowerRect.sizeDelta.y);
+        }
     }
 
     // Start is called before the first frame update
@@ -63,12 +76,7 @@ public class FlyChallenge : Challenge
             case FlyState.Entering:
                 Move(true, enteringSpeed);
 
-                //if (!active && IsOnScreen())
-                //{
-                //    Activate();
-                //}
-
-                if (Mathf.Abs(transform.position.x - (Screen.width / 2)) < 25 && Mathf.Abs(transform.position.y - (Screen.height / 2)) < 25)
+                if (Mathf.Abs(transform.position.x - finalDestination.x) < 25 && transform.position.y < flowerRect.sizeDelta.y)
                 {
                     state = FlyState.Sitting;
                     Activate();
@@ -89,7 +97,7 @@ public class FlyChallenge : Challenge
     {
         int change = towardsFlower ? 1 : -1;
 
-        Vector3 vector = new Vector3(Screen.width / 2, Screen.height / 2, 1) - this.transform.position * change;
+        Vector3 vector = finalDestination - this.transform.position * change;
         if (!towardsFlower && direction < 0)
         {
             vector.x *= -1;

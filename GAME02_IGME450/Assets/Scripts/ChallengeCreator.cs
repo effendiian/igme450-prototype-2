@@ -9,6 +9,7 @@ public class ChallengeCreator : MonoBehaviour
     public int chance = 80;
 
     public GrowBehavior flower;
+    public GameObject flowerObject;
     private List<Challenge> currentChallenges = new List<Challenge>();
 
     float time = 0;
@@ -55,7 +56,7 @@ public class ChallengeCreator : MonoBehaviour
         newChallenge.transform.SetParent(canvas.transform, false);
 
         Challenge script = newChallenge.GetComponent<Challenge>();
-        script.SetCreator(this);
+        script.SetCreatorAndFlower(this, flowerObject);
         script.Setup();
         currentChallenges.Add(script);
 
