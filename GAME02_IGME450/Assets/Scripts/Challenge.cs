@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Challenge: MonoBehaviour
 {
-   private ChallengeCreator challengeCreator;
+   protected ChallengeCreator challengeCreator;
    protected bool active;
 
    public void SetCreator(ChallengeCreator challengeCreator)
