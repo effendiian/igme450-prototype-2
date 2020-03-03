@@ -149,6 +149,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81ac665b8f096244cb07d7de8fa95333, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  challengeActive: 0
+  bulb: {fileID: 0}
+  bloom: {fileID: 0}
 --- !u!4 &288813600
 Transform:
   m_ObjectHideFlags: 0
