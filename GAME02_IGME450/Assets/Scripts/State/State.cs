@@ -23,41 +23,26 @@ public abstract class State
     /// <summary>
     /// Initialize the State.
     /// </summary>
-    public virtual void Enter()
-    {
-
-    }
+    public virtual void Enter() => Debug.Log($"Entering state '{this}'");
 
     /// <summary>
     /// Handle and process input during this particular State.
     /// </summary>
-    public virtual void HandleInput()
-    {
-
-    }
+    public virtual void HandleInput() { }
 
     /// <summary>
     /// Per frame update.
     /// </summary>
-    public virtual void Update()
-    {
-
-    }
+    public virtual void Update() { }
 
     /// <summary>
     /// Physics updates that occur at a fixed pace.
     /// </summary>
-    public virtual void FixedUpdate()
-    {
-
-    }
+    public virtual void FixedUpdate() { }
 
     /// <summary>
     /// On exit from the State.
     /// </summary>
-    public virtual void Exit()
-    {
-
-    }
+    public virtual void Exit() => Debug.Log($"Exiting state '{this}'");
 
 }

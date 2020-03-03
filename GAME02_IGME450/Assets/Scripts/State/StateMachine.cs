@@ -74,8 +74,8 @@ public class StateMachine : MonoBehaviour
     /// </summary>
     void Start()
     {
-        this.StartingState = null;
-        this.States = null;
+        this.StartingState = this.StartingState ?? null;
+        this.States = this.States ?? null;
     }
 
     /// <summary>
@@ -143,8 +143,6 @@ public class StateMachine : MonoBehaviour
     }
 
 }
-
-
 
 /// <summary>
 /// StateMachine tracks state.
