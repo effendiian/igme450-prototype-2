@@ -9,10 +9,11 @@ public class ChallengeCreator : MonoBehaviour
     public int chance = 80;
 
     public GrowBehavior flower;
+    public GameObject flowerObject;
     private List<Challenge> currentChallenges = new List<Challenge>();
 
     float time = 0;
-    float buffer = 1.5f;
+    float buffer = 0;
 
 
     // Start is called before the first frame update
@@ -56,7 +57,7 @@ public class ChallengeCreator : MonoBehaviour
         newChallenge.transform.SetParent(canvas.transform, false);
 
         Challenge script = newChallenge.GetComponent<Challenge>();
-        script.SetCreator(this);
+        script.SetCreatorAndFlower(this, flowerObject);
         script.Setup();
         currentChallenges.Add(script);
 
@@ -75,6 +76,6 @@ public class ChallengeCreator : MonoBehaviour
         if (flower)
             flower.challengeActive = false;
         this.currentChallenges.Remove(challenge);
-        buffer = 3;
+        buffer = 1;
     }
 }

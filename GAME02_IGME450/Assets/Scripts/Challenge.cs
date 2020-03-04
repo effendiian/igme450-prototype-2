@@ -4,12 +4,15 @@ using UnityEngine;
 
 public abstract class Challenge: MonoBehaviour
 {
+
    protected ChallengeCreator challengeCreator;
+   protected GameObject flower;
    protected bool active;
 
-   public void SetCreator(ChallengeCreator challengeCreator)
+   public void SetCreatorAndFlower(ChallengeCreator challengeCreator, GameObject flower)
     {
         this.challengeCreator = challengeCreator;
+        this.flower = flower;
     }
 
     public void Activate()
