@@ -86,8 +86,8 @@ public class WaterCanBehavior : Challenge
 
         //change the dirt to make it look dry
         dryPotCreated = Instantiate(dryDirt);
-        dryPotCreated.transform.SetParent(this.challengeCreator.canvas.transform, false);
-        dryPotCreated.transform.SetSiblingIndex(2);
+        dryPotCreated.transform.SetParent(this.challengeCreator.canvas.transform.GetChild(1), false);
+        dryPotCreated.transform.SetSiblingIndex(0);
 
         
     }

@@ -88,4 +88,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dryDirt: {fileID: 7584508975861360118, guid: e31330ea62af2c542a620ab78b5d82d6, type: 3}
   water: {fileID: 7910275006527462083, guid: 66d912dc03b00b74483ef2b1ef1d3727, type: 3}
-  rotationControl: 5
+  rotationControl: 0.5
