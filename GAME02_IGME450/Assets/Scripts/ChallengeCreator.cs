@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ChallengeCreator : MonoBehaviour
 {
@@ -10,6 +12,10 @@ public class ChallengeCreator : MonoBehaviour
 
     public GrowBehavior flower;
     public GameObject flowerObject;
+
+    private List<Type> challengeTypes = new List<Type>();
+
+    private List<int> availableChallenges = new List<int>();
     private List<Challenge> currentChallenges = new List<Challenge>();
 
     float time = 0;
@@ -19,7 +25,11 @@ public class ChallengeCreator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        for (int i = 0; i < challenges.Count; i++)
+        {
+            challengeTypes.Add(challenges[i].GetComponent<Challenge>().GetType());
+            availableChallenges.Add(i);
+        }
     }
 
     private void FixedUpdate()
@@ -45,14 +55,17 @@ public class ChallengeCreator : MonoBehaviour
     private void CreateChallenge()
     {
         //For now don't allow multiple challenges at once
-        if (currentChallenges.Count > 0 || buffer > 0)
+        if (availableChallenges.Count == 0 || buffer > 0)
         {
             return;
         }
 
         time = 0;
 
-        int choice = Random.Range(0, challenges.Count);
+        int rand = Random.Range(0, availableChallenges.Count);
+        int choice = availableChallenges[rand];
+        availableChallenges.Remove(choice);
+
         GameObject newChallenge = Instantiate(challenges[choice]);
         newChallenge.transform.SetParent(canvas.transform, false);
 
@@ -75,6 +88,16 @@ public class ChallengeCreator : MonoBehaviour
         //TODO: Remove if check when flower is set up
         if (flower)
             flower.challengeActive = false;
+
+        for (int i = 0; i < challengeTypes.Count; i++)
+        {
+            if (challengeTypes[i] == challenge.GetType())
+            {
+                availableChallenges.Add(i);
+                break;
+            }
+        }
+
         this.currentChallenges.Remove(challenge);
         buffer = 1;
     }

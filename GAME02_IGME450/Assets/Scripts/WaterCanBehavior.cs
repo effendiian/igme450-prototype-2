@@ -100,6 +100,7 @@ public class WaterCanBehavior : Challenge
 
         this.transform.position = new Vector3(this.transform.position.x +25, this.transform.position.y + 175, this.transform.position.z);
 
+        DestroyImmediate(waterDrop, true);
         waterDrop = Instantiate(water);
         waterDrop.transform.SetParent(this.challengeCreator.canvas.transform, false);
     }
