@@ -1,19 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NaughtyAttributes;
 
-
-public class VisualEffectController : MonoBehaviour
+/// <summary>
+/// Base controller for triggering VisualEffects.
+/// </summary>
+public abstract class VisualEffectController<T> : MonoBehaviour where T : IVisualEffect
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    /////////////////////////////////////
+    // Fields / Properties
+    /////////////////////////////////////
+
+    /// <summary>
+    /// Prefab for instantiation of visual effect.
+    /// </summary>
+    [SerializeField, Required, Label("Visual Effect Prefab")]
+    private GameObject prefab = null;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    StateMachine engine = null;
 }
