@@ -7,14 +7,18 @@ public class SwipeInput : MonoBehaviour
     private Vector2 start;
     private Vector2 end;
 
-    public float minimumMagnitude = 50;
+    public float minimumMagnitude = 150;
 
+    public List<GameObject> observerObjects = new List<GameObject>();
     public List<SwipeObserver> observers = new List<SwipeObserver>();
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        foreach (var obj in observerObjects)
+        {
+            observers.Add(obj.GetComponent<SwipeObserver>());
+        }
     }
 
     // Update is called once per frame
@@ -61,7 +65,7 @@ public class SwipeInput : MonoBehaviour
         {
             foreach (var observer in observers)
             {
-                observer.OnSwipe(swipe);
+                observer.OnSwipe(swipe, start);
             }
         }
     }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6602494663027467559}
   - component: {fileID: 2118495108424934555}
   m_Layer: 5
-  m_Name: PotWet 1
+  m_Name: PotWithFlower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,6 +81,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9176628306373642366}
     m_Modifications:
+    - target: {fileID: 4005607689730069116, guid: d276ee335c73be74fbd1d2a573d93eb7,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005607689730069116, guid: d276ee335c73be74fbd1d2a573d93eb7,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 5915492565107071504, guid: d276ee335c73be74fbd1d2a573d93eb7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -149,12 +159,12 @@ PrefabInstance:
     - target: {fileID: 5915492565107071504, guid: d276ee335c73be74fbd1d2a573d93eb7,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 15
+      value: 22.5
       objectReference: {fileID: 0}
     - target: {fileID: 5915492565107071504, guid: d276ee335c73be74fbd1d2a573d93eb7,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 15
+      value: 22.5
       objectReference: {fileID: 0}
     - target: {fileID: 5915492565107071504, guid: d276ee335c73be74fbd1d2a573d93eb7,
         type: 3}
@@ -179,17 +189,37 @@ PrefabInstance:
     - target: {fileID: 5915492565107071504, guid: d276ee335c73be74fbd1d2a573d93eb7,
         type: 3}
       propertyPath: m_Pivot.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5915492565107071504, guid: d276ee335c73be74fbd1d2a573d93eb7,
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5915492565107071504, guid: d276ee335c73be74fbd1d2a573d93eb7,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5915492565107071504, guid: d276ee335c73be74fbd1d2a573d93eb7,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5915492565107071505, guid: d276ee335c73be74fbd1d2a573d93eb7,
         type: 3}
       propertyPath: m_Name
       value: Flower
+      objectReference: {fileID: 0}
+    - target: {fileID: 7708799979502193918, guid: d276ee335c73be74fbd1d2a573d93eb7,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 7708799979502193918, guid: d276ee335c73be74fbd1d2a573d93eb7,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 177.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d276ee335c73be74fbd1d2a573d93eb7, type: 3}

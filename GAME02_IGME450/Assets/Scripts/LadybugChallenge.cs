@@ -2,23 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyChallenge : Challenge
+public class LadybugChallenge : Challenge
 {
-    FlyState state = FlyState.Entering;
+    LadybugState state = LadybugState.Entering;
 
-    public float enteringSpeed = 300f;
-    public float leavingSpeed = 1000f;
+    public float enteringSpeed = 250f;
 
     private int startPosition = 100;
     private int direction = 1;
-    
+
     private int currentAngle;
     private Vector3 currentDestination;
     private float timeTraveled;
 
     RectTransform flowerRect;
     private Vector3 finalDestination;
-    
+    private Vector3 blowDirection;
+    private float blowTime = 0f;
+    private float blowSpeed = 250f;
+
 
     public override void Setup()
     {
@@ -36,11 +38,13 @@ public class FlyChallenge : Challenge
             if (Random.Range(0, 100) > 50) //Left
             {
                 startX = -100;
-            } else //Right
+            }
+            else //Right
             {
                 startX = Screen.width + 100;
             }
-        } else //Come from the top
+        }
+        else //Come from the top
         {
             startX = Random.Range(-100, Screen.width + 100);
             startY = Screen.height + 100;
@@ -55,7 +59,7 @@ public class FlyChallenge : Challenge
         }
 
         this.gameObject.transform.position = new Vector3(startX, startY, 0);
-        
+
         finalDestination = new Vector3(flowerRect.transform.position.x, startY + Random.Range(-30, 30), 1);
 
         //If we're aiming above the flower, lower
@@ -76,23 +80,27 @@ public class FlyChallenge : Challenge
     {
         switch (state)
         {
-            case FlyState.Entering:
+            case LadybugState.Entering:
                 Move(true, enteringSpeed);
 
-                if (Mathf.Abs(transform.position.x - finalDestination.x) < 25 && 
+                if (Mathf.Abs(transform.position.x - finalDestination.x) < 25 &&
                     (transform.position.y < flowerRect.sizeDelta.y + flowerRect.transform.position.y && transform.position.y > flowerRect.transform.position.y))
                 {
-                    state = FlyState.Sitting;
+                    state = LadybugState.Sitting;
                     Activate();
                 }
                 break;
-            case FlyState.Leaving:
-                Move(false, leavingSpeed);
-
+            case LadybugState.Blowing:
                 if (IsOffScreen())
                 {
                     Destroy(this.gameObject);
                 }
+                else if (timeTraveled > blowTime)
+                {
+                    state = LadybugState.Entering;
+                }
+
+                Blow();
                 break;
         }
     }
@@ -113,10 +121,20 @@ public class FlyChallenge : Challenge
         timeTraveled += Time.deltaTime;
         if (timeTraveled > 0.5)
         {
-            currentAngle = Random.Range(-50, 50);
+            currentAngle = Random.Range(-10, 10);
             timeTraveled = 0;
         }
         vector = Quaternion.Euler(0, 0, currentAngle) * vector;
+        this.transform.position += vector;
+    }
+
+    private void Blow()
+    {
+        Vector3 vector = blowDirection;
+        vector.Normalize();
+        vector *= Time.deltaTime * blowSpeed;
+
+        timeTraveled += Time.deltaTime;
         this.transform.position += vector;
     }
 
@@ -129,26 +147,26 @@ public class FlyChallenge : Challenge
     private bool IsOnScreen()
     {
         return this.gameObject.transform.position.x > -30 && this.gameObject.transform.position.x < Screen.width - 10 &&
-            this.gameObject.transform.position.y > 10 && this.gameObject.transform.position.y < Screen.width - 30;
+            this.gameObject.transform.position.y > 10 && this.gameObject.transform.position.y < Screen.height - 30;
     }
 
-
-    public void Click()
+    public void OnSwipe(Vector2 swipe)
     {
-        state = FlyState.Leaving;
-        this.Complete();
-    }
-
-    private void OnMouseDown()
-    {
-        state = FlyState.Leaving;
-        this.Complete();
+        if (IsOnScreen())
+        {
+            this.Complete();
+            state = LadybugState.Blowing;
+            blowDirection = Quaternion.Euler(0, 0, Random.Range(-5, 5)) * swipe.normalized;
+            blowTime += 1f;
+            timeTraveled = 0;
+        }
     }
 }
 
-public enum FlyState
+
+public enum LadybugState
 {
     Entering,
     Sitting,
-    Leaving
+    Blowing
 }
