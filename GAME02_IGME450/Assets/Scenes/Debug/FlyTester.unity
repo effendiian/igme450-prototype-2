@@ -634,7 +634,7 @@ PrefabInstance:
     - target: {fileID: 5915492565107071504, guid: d276ee335c73be74fbd1d2a573d93eb7,
         type: 3}
       propertyPath: m_Pivot.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5915492565107071504, guid: d276ee335c73be74fbd1d2a573d93eb7,
         type: 3}
@@ -713,7 +713,7 @@ PrefabInstance:
     - target: {fileID: 3196940732109405861, guid: 9b6fb8a7b6ec55c4b871c77fb3156fb8,
         type: 3}
       propertyPath: challenges.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3196940732109405861, guid: 9b6fb8a7b6ec55c4b871c77fb3156fb8,
         type: 3}

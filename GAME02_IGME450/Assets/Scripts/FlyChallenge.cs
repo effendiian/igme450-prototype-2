@@ -22,12 +22,17 @@ public class FlyChallenge : Challenge
 
     public override void Setup()
     {
+
+        //Get flower rect transform
+        flowerRect = flower.GetComponent<RectTransform>();
+        float minY = flower.transform.position.y;
+
         float startX, startY;
 
         //Come from the sides
         if (Random.Range(0, 100) <= 80)
         {
-            startY = Random.Range(50, Screen.height + 100);
+            startY = Random.Range(minY, Screen.height + 100);
             if (Random.Range(0, 100) > 50) //Left
             {
                 startX = -100;
@@ -50,15 +55,13 @@ public class FlyChallenge : Challenge
         }
 
         this.gameObject.transform.position = new Vector3(startX, startY, 0);
-
-        //Get flower rect transform
-        flowerRect = flower.GetComponent<RectTransform>();
-        finalDestination = new Vector3(Screen.width / 2, startY + Random.Range(-30, 30), 1);
+        
+        finalDestination = new Vector3(flowerRect.transform.position.x, startY + Random.Range(-30, 30), 1);
 
         //If we're aiming above the flower, lower
-        if (finalDestination.y > flowerRect.sizeDelta.y)
+        if (finalDestination.y > flowerRect.sizeDelta.y + minY || finalDestination.y < minY)
         {
-            finalDestination.y = Random.Range((flowerRect.sizeDelta.y * 4) / 5, flowerRect.sizeDelta.y);
+            finalDestination.y = Random.Range((flowerRect.sizeDelta.y * 4) / 5, flowerRect.sizeDelta.y) + minY;
         }
     }
 
@@ -76,7 +79,7 @@ public class FlyChallenge : Challenge
             case FlyState.Entering:
                 Move(true, enteringSpeed);
 
-                if (Mathf.Abs(transform.position.x - finalDestination.x) < 25 && transform.position.y < flowerRect.sizeDelta.y)
+                if (Mathf.Abs(transform.position.x - finalDestination.x) < 25 && transform.position.y < flowerRect.sizeDelta.y + flowerRect.transform.position.y)
                 {
                     state = FlyState.Sitting;
                     Activate();
@@ -109,7 +112,7 @@ public class FlyChallenge : Challenge
         timeTraveled += Time.deltaTime;
         if (timeTraveled > 0.5)
         {
-            currentAngle = Random.Range(-70, 70);
+            currentAngle = Random.Range(-50, 50);
             timeTraveled = 0;
         }
         vector = Quaternion.Euler(0, 0, currentAngle) * vector;
@@ -119,7 +122,7 @@ public class FlyChallenge : Challenge
     private bool IsOffScreen()
     {
         return this.gameObject.transform.position.x < -100 || this.gameObject.transform.position.x > Screen.width + 100 ||
-            this.gameObject.transform.position.y < -100 || this.gameObject.transform.position.y > Screen.width + 100;
+            this.gameObject.transform.position.y < -100 || this.gameObject.transform.position.y > Screen.height + 100;
     }
 
     private bool IsOnScreen()
