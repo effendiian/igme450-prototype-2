@@ -19,7 +19,7 @@ public interface IVisualEffect
     /// Place visual effect at specified location.
     /// </summary>
     /// <param name="position">Local position to place object.</param>
-    public void Place(Vector3 position);
+    void Place(Vector3 position);
 
     /// <summary>
     /// Play the visual effect.

@@ -14,29 +14,30 @@ public class SparkleEffect : MonoBehaviour, IVisualEffect
     /////////////////////////////////////
     // Fields / Properties
     /////////////////////////////////////
-
-    /// <summary>
-    /// Debug mode flag. Show 
-    /// </summary>
-    [SerializeField]
-    protected bool debug = false;
-
-    /// <summary>
-    /// Debug icon image for the sparkle effect.
-    /// </summary>
-    protected Sprite debugIcon = null;
-
-    /// <summary>
-    /// Reference to the debug image renderer.
-    /// </summary>
-    [SerializeField, ReadOnly]
-    protected SpriteRenderer debugRenderer = null;
-
+    
     /// <summary>
     /// Particle system.
     /// </summary>
     [SerializeField, Required]
     private ParticleSystem particles = null;
+
+    /// <summary>
+    /// Debug mode flag. Show 
+    /// </summary>
+    [SerializeField, BoxGroup("Debug Fields")]
+    protected bool debug = false;
+
+    /// <summary>
+    /// Debug icon image for the sparkle effect.
+    /// </summary>
+    [SerializeField, BoxGroup("Debug Fields")]
+    protected Sprite debugIcon = null;
+
+    /// <summary>
+    /// Reference to the debug image renderer.
+    /// </summary>
+    [SerializeField, BoxGroup("Debug Fields")]
+    protected SpriteRenderer debugRenderer = null;
 
     /// <summary>
     /// Reference to the particle system.
@@ -54,7 +55,7 @@ public class SparkleEffect : MonoBehaviour, IVisualEffect
     {
 #if UNITY_EDITOR
         // Set to debug mode, when running from the editor.
-        this.debug = true;
+        this.debug = this.debug && true;
 #else
         // Set debug mode to false, if not running from the editor.
         this.debug = false;
@@ -110,6 +111,25 @@ public class SparkleEffect : MonoBehaviour, IVisualEffect
     /// <summary>
     /// Stop the effect if it is playing.
     /// </summary>
-    public void Stop() => this.Particles.Stop();
+    [Button("Stop Immediately")]
+    public void Stop() => this.Particles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+
+    /// <summary>
+    /// Play effect once.
+    /// </summary>
+    [Button("Play Once")]
+    private void PlayOnce()
+    {
+        // Get the loop reference.
+        var mainModule = this.Particles.main;
+        if (mainModule.loop)
+        {
+            // Play the effect once.
+            mainModule.loop = false;
+        }
+
+        // Play the effect.
+        this.Play();
+    }
 
 }
