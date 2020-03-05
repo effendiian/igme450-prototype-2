@@ -16,7 +16,8 @@ public class GrowBehavior : MonoBehaviour
     LifeState currentState; //LifeState to hold where the plant currently is in the life cycle
     public bool challengeActive;    //bool to hold whether there is an active challenge or not
 
-    float maxHeight = 350f;
+    float maxHeight = 525f;
+    float width = 22.5f;
     RectTransform stalk;
     public GameObject bulb;
     public GameObject bloom;
@@ -59,7 +60,8 @@ public class GrowBehavior : MonoBehaviour
                 }
                 else
                 {
-                    float size = 5 + (timer / 5) * 10;
+                    float baseSize = 5f;
+                    float size = baseSize + (timer / 5) * (width - baseSize);
                     stalk.sizeDelta = new Vector2(size, size);
                 }
                 break;
@@ -67,14 +69,14 @@ public class GrowBehavior : MonoBehaviour
                 if (timer > 20)
                 {
                     timer = 0;
-                    stalk.sizeDelta = new Vector2(15, maxHeight);
+                    stalk.sizeDelta = new Vector2(width, maxHeight);
                     currentState++;
 
                     bulb.transform.localScale = new Vector3(0, 0, 1);
                     bulb.SetActive(true);
                 } else
                 {
-                    stalk.sizeDelta = new Vector2(15, ((timer / 20) * (maxHeight - 15)) + 15);
+                    stalk.sizeDelta = new Vector2(width, ((timer / 20) * (maxHeight - width)) + width);
                 }
                 break;
             case LifeState.Plant:

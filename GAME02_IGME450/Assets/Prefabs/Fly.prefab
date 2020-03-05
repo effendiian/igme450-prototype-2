@@ -114,8 +114,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05b25bc814a2b2a4a9f84154bb905abe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enteringSpeed: 250
-  leavingSpeed: 750
+  enteringSpeed: 300
+  leavingSpeed: 1000
   currentAngle: 0
   currentDestination: {x: 0, y: 0, z: 0}
   timeTraveled: 0

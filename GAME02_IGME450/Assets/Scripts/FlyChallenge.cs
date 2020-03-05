@@ -6,15 +6,15 @@ public class FlyChallenge : Challenge
 {
     FlyState state = FlyState.Entering;
 
-    public float enteringSpeed = 250f;
-    public float leavingSpeed = 750f;
+    public float enteringSpeed = 300f;
+    public float leavingSpeed = 1000f;
 
     private int startPosition = 100;
     private int direction = 1;
     
-    public int currentAngle;
-    public Vector3 currentDestination;
-    public float timeTraveled;
+    private int currentAngle;
+    private Vector3 currentDestination;
+    private float timeTraveled;
 
     RectTransform flowerRect;
     private Vector3 finalDestination;
@@ -79,7 +79,8 @@ public class FlyChallenge : Challenge
             case FlyState.Entering:
                 Move(true, enteringSpeed);
 
-                if (Mathf.Abs(transform.position.x - finalDestination.x) < 25 && transform.position.y < flowerRect.sizeDelta.y + flowerRect.transform.position.y)
+                if (Mathf.Abs(transform.position.x - finalDestination.x) < 25 && 
+                    (transform.position.y < flowerRect.sizeDelta.y + flowerRect.transform.position.y && transform.position.y > flowerRect.transform.position.y))
                 {
                     state = FlyState.Sitting;
                     Activate();
