@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4426205533462790497}
   m_Layer: 5
   m_Name: Fly
-  m_TagString: Untagged
+  m_TagString: Fly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,9 +116,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enteringSpeed: 300
   leavingSpeed: 1000
-  currentAngle: 0
-  currentDestination: {x: 0, y: 0, z: 0}
-  timeTraveled: 0
 --- !u!114 &4426205533462790497
 MonoBehaviour:
   m_ObjectHideFlags: 0

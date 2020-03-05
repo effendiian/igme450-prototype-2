@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwipeTestArrow : SwipeObserver
+public class SwipeTestArrow : MonoBehaviour, SwipeObserver
 {
 
     // Start is called before the first frame update
@@ -17,7 +17,7 @@ public class SwipeTestArrow : SwipeObserver
         
     }
 
-    public override void OnSwipe(Vector2 swipe)
+    public void OnSwipe(Vector2 swipe, Vector2 startPosition)
     {
         float rotation = Mathf.Atan2(swipe.y, swipe.x);
         Debug.Log(rotation);
