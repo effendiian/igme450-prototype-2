@@ -103,6 +103,7 @@ public class WaterCanBehavior : Challenge
         DestroyImmediate(waterDrop, true);
         waterDrop = Instantiate(water);
         waterDrop.transform.SetParent(this.challengeCreator.canvas.transform, false);
+        waterDrop.transform.SetSiblingIndex(2);
     }
     //function to end the challenge
     private void FinishChallenge()
