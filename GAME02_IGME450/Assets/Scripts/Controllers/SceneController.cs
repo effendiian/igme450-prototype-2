@@ -20,7 +20,7 @@ public class SceneController : MonoBehaviour
     /// Load listed scenes additively.
     /// </summary>
     [SerializeField]
-    private SceneLoadProfile profile;
+    private SceneLoadProfile profile = null;
 
     /// <summary>
     /// On Awake, initialize the scene's dependencies.
