@@ -73,7 +73,6 @@ public class SparkleEffect : MonoBehaviour, IVisualEffect
 
         // Initialize the particle system.
         this.particles = this.particles ?? this.GetOrAddComponent<ParticleSystem>();
-
     }
 
     /////////////////////////////////////
@@ -101,17 +100,16 @@ public class SparkleEffect : MonoBehaviour, IVisualEffect
     /// Place visual effect at specified location.
     /// </summary>
     /// <param name="position">Local position to place object.</param>
-    public void Place(Vector3 position) {
-        // Update the local position of this element.
-        this.transform.localPosition = position;
-    }
+    public void Place(Vector3 position) => this.transform.localPosition = position;
 
-    public void Play() { 
+    /// <summary>
+    /// Play the sparkle effect.
+    /// </summary>
+    public void Play() => this.Particles.Play();
 
-    }
-
-    public void Stop() {
-
-    }
+    /// <summary>
+    /// Stop the effect if it is playing.
+    /// </summary>
+    public void Stop() => this.Particles.Stop();
 
 }
