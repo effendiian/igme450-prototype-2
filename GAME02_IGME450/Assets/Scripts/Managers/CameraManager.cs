@@ -54,6 +54,16 @@ public class CameraManager : Manager<CameraManager>
         mainCamera = this.GetCameraObject(mainCamera, "MainCamera");
         GetMainCamera();
         Debug.Log($"Initializing camera [{this.mainCamera}].");
+
+        GameObject[] cameras = GameObject.FindGameObjectsWithTag("MainCamera");
+        if (cameras.Length > 0)
+        {
+            for (int i = cameras.Length; i >= 0; i--)
+            {
+                Camera c = cameras[i].GetComponent<Camera>();
+                c.enabled = false;
+            }
+        }
     }
 
     /// <summary>
@@ -64,6 +74,17 @@ public class CameraManager : Manager<CameraManager>
         uiCamera = this.GetCameraObject(uiCamera, "UICamera");
         GetUICamera();
         Debug.Log($"Initializing [{this.uiCamera}].");
+
+        GameObject[] cameras = GameObject.FindGameObjectsWithTag("UICamera");
+        if (cameras.Length > 0)
+        {
+            for (int i = cameras.Length; i >= 0; i--)
+            {
+                Camera c = cameras[i].GetComponent<Camera>();
+                c.enabled = false;
+            }
+        }
+
     }
 
     /// <summary>

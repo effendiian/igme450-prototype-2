@@ -29,13 +29,8 @@ public class GameState : State
     public override void Exit()
     {
         base.Exit();
-        Debug.Log($"[{typeof(GameState)}] - Ended the application.");
-
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif 
+        Debug.Log($"[{typeof(GameState)}] - Ending the application.");
+        GameManager.Instance.Quit();
     }
 
 }
