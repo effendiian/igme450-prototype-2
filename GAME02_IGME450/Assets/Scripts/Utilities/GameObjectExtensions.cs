@@ -22,5 +22,9 @@ namespace MHO.Extensions
             where T : Component 
             => gameObject.GetComponent<T>() ?? gameObject.AddComponent<T>();
 
+        public static T GetOrAddComponent<T>(this MonoBehaviour behaviour)
+            where T : Component
+            => behaviour.GetComponent<T>() ?? behaviour.gameObject.GetOrAddComponent<T>();
+
     }
 }
