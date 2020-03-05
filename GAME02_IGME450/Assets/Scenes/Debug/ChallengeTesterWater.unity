@@ -500,6 +500,24 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1998625666}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1998625668 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2132246575499285294, guid: e840c338aac601149ba758d7ab445041,
+    type: 3}
+  m_PrefabInstance: {fileID: 1998625666}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1998625669 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1749796952728872878, guid: e840c338aac601149ba758d7ab445041,
+    type: 3}
+  m_PrefabInstance: {fileID: 1998625666}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998625668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81ac665b8f096244cb07d7de8fa95333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6917428372013465572
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -576,7 +594,7 @@ PrefabInstance:
         type: 3}
       propertyPath: flower
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1998625669}
     - target: {fileID: 3196940732109405861, guid: 9b6fb8a7b6ec55c4b871c77fb3156fb8,
         type: 3}
       propertyPath: chance
@@ -602,7 +620,7 @@ PrefabInstance:
         type: 3}
       propertyPath: flowerObject
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1998625668}
     - target: {fileID: 7712759009706366119, guid: 9b6fb8a7b6ec55c4b871c77fb3156fb8,
         type: 3}
       propertyPath: m_Name

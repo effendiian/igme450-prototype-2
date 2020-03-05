@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class SwipeObserver: MonoBehaviour
+public interface SwipeObserver
 {
-    public abstract void OnSwipe(Vector2 swipe);
+    void OnSwipe(Vector2 swipe, Vector2 startPosition);
 }
