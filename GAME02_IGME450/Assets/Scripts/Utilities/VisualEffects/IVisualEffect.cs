@@ -9,6 +9,16 @@ public interface IVisualEffect
 {
 
     /// <summary>
+    /// Determine if effect is playing.
+    /// </summary>
+    bool IsPlaying { get; }
+
+    /// <summary>
+    /// Determine if effect is stopped.
+    /// </summary>
+    bool IsStopped { get; }
+
+    /// <summary>
     /// Set position of visual effect.
     /// </summary>
     /// <param name="parent">Object to make parent of this component.</param>
@@ -31,4 +41,14 @@ public interface IVisualEffect
     /// </summary>
     void Stop();
 
+    /// <summary>
+    /// Enable the effect.
+    /// </summary>
+    void Enable();
+
+    /// <summary>
+    /// Release resources associated with this effect.
+    /// </summary>
+    void Release();
+       
 }

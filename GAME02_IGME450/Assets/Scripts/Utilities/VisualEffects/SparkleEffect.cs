@@ -44,6 +44,16 @@ public class SparkleEffect : MonoBehaviour, IVisualEffect
     /// </summary>
     public ParticleSystem Particles => (this.particles) ? this.particles : this.particles = this.GetOrAddComponent<ParticleSystem>();
 
+    /// <summary>
+    /// Is the system playing?
+    /// </summary>
+    public bool IsPlaying => this.Particles.isPlaying;
+
+    /// <summary>
+    /// Is the system stopped?
+    /// </summary>
+    public bool IsStopped => this.Particles.isStopped;
+
     /////////////////////////////////////
     // MonoBehaviour Methods
     /////////////////////////////////////
@@ -81,6 +91,22 @@ public class SparkleEffect : MonoBehaviour, IVisualEffect
     /////////////////////////////////////
 
     /// <summary>
+    /// Enable the effect.
+    /// </summary>
+    public void Enable()
+    {
+        this.gameObject.SetActive(true);
+    }
+
+    /// <summary>
+    /// Release this effect.
+    /// </summary>
+    public void Release()
+    {
+        this.gameObject.SetActive(false);
+    }
+
+    /// <summary>
     /// Place visual effect at specified location. If parent is non-null, it will be made a child of the parent object.
     /// </summary>
     /// <param name="parent">Parent to assign.</param>
@@ -90,7 +116,7 @@ public class SparkleEffect : MonoBehaviour, IVisualEffect
         if (parent)
         {
             // Set parent as input object if reference is non-null.
-            parent.transform.SetParent(this.transform);
+            this.transform.SetParent(parent.transform);
         }
 
         // Place at local origin if local position is null.

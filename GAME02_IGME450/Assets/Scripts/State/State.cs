@@ -23,7 +23,7 @@ public abstract class State
     /// <summary>
     /// Initialize the State.
     /// </summary>
-    public virtual void Enter() => Debug.Log($"Entering state '{this}'");
+    public virtual void Enter() { } // => Debug.Log($"Entering state '{this}'");
 
     /// <summary>
     /// Handle and process input during this particular State.
@@ -43,6 +43,6 @@ public abstract class State
     /// <summary>
     /// On exit from the State.
     /// </summary>
-    public virtual void Exit() => Debug.Log($"Exiting state '{this}'");
+    public virtual void Exit() { } // => Debug.Log($"Exiting state '{this}'");
 
 }
