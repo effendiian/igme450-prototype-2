@@ -135,14 +135,13 @@ public class FlyChallenge : Challenge
 
     public void Click()
     {
-        state = FlyState.Leaving;
         this.Complete();
+        state = FlyState.Leaving;
     }
 
     private void OnMouseDown()
     {
-        state = FlyState.Leaving;
-        this.Complete();
+        Click();
     }
 }
 
