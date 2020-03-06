@@ -212,23 +212,14 @@ GameObject:
   m_Component:
   - component: {fileID: 356916287}
   - component: {fileID: 356916286}
-  - component: {fileID: 356916285}
   - component: {fileID: 356916288}
   m_Layer: 0
-  m_Name: (Editor) UI Camera
-  m_TagString: EditorOnly
+  m_Name: UI Camera (Depth Only)
+  m_TagString: UICamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &356916285
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 356916284}
-  m_Enabled: 1
 --- !u!20 &356916286
 Camera:
   m_ObjectHideFlags: 0
@@ -238,7 +229,7 @@ Camera:
   m_GameObject: {fileID: 356916284}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 3
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -257,7 +248,7 @@ Camera:
   field of view: 60
   orthographic: 1
   orthographic size: 5
-  m_Depth: -1
+  m_Depth: 3
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -298,7 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135c9ccce856c2d4abd50b7374f0a0b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ignore: 0
+  _ignore: 1
   _debugCamera: {fileID: 356916286}
 --- !u!1 &517130297
 GameObject:
@@ -313,7 +304,7 @@ GameObject:
   - component: {fileID: 517130299}
   - component: {fileID: 517130298}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Plant (Canvas)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -367,8 +358,8 @@ Canvas:
   m_GameObject: {fileID: 517130297}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 356916286}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -377,7 +368,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!224 &517130301
 RectTransform:

@@ -33,7 +33,7 @@ public class GameController : MonoBehaviour
         // Ensure state machine component exists.
         this.engine = gameObject.GetOrAddComponent<StateMachine>();
     }
-
+    
     /// <summary>
     /// Start the engine.
     /// </summary>

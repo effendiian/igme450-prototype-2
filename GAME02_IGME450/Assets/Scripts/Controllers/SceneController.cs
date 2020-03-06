@@ -28,7 +28,7 @@ public class SceneController : MonoBehaviour
     private void Awake()
     {
         // Initialize the GameManager instance.
-        GameManager.Instance.DoNothing();
+        if (GameManager.Instance) { GameManager.Instance.DoNothing(); }
 
         // Ensure state machine component exists.
         this.engine = gameObject.GetOrAddComponent<StateMachine>();
@@ -61,14 +61,8 @@ public class SceneController : MonoBehaviour
 
             // Update the current state.
             this.engine.CurrentState.Update();
-
-            // On press of the space key, exit the game.
-            if (Input.GetKey(KeyCode.Space))
-            {
-                this.engine.PopState();
-                Debug.Log("Popping state!");
-            }
-        } else
+        }
+        else
         {
             Debug.Log($"Done! {this.engine.CurrentState}");
         }

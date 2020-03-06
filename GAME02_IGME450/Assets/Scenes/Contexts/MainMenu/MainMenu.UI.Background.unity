@@ -188,8 +188,8 @@ Canvas:
   m_GameObject: {fileID: 254939815}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
-  m_Camera: {fileID: 672251288}
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -198,7 +198,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!224 &254939819
 RectTransform:
@@ -244,13 +244,23 @@ GameObject:
   m_Component:
   - component: {fileID: 672251289}
   - component: {fileID: 672251288}
+  - component: {fileID: 672251287}
+  - component: {fileID: 672251290}
   m_Layer: 0
-  m_Name: UI Camera (Solid)
-  m_TagString: UICamera
+  m_Name: (Editor) UI Camera
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!81 &672251287
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672251286}
+  m_Enabled: 1
 --- !u!20 &672251288
 Camera:
   m_ObjectHideFlags: 0
@@ -260,8 +270,8 @@ Camera:
   m_GameObject: {fileID: 672251286}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
-  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -308,6 +318,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &672251290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672251286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 135c9ccce856c2d4abd50b7374f0a0b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ignore: 0
+  _debugCamera: {fileID: 672251288}
 --- !u!1 &1310084162
 GameObject:
   m_ObjectHideFlags: 0

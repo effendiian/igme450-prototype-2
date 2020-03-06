@@ -10,9 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a92354071e6d4bd41b205bdb83ad2547, type: 3}
-  m_Name: MainMenu
+  m_Name: Main
   m_EditorClassIdentifier: 
   scenes:
-  - MainMenu.UI.HUD
-  - MainMenu.UI.Instructions
-  - MainMenu.UI.Background
+  - MainMenu.Core

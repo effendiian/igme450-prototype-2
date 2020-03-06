@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
@@ -21,15 +21,21 @@ EditorBuildSettings:
     path: Assets/Scenes/Contexts/Game/Game.UI.Pause.unity
     guid: e71fd7bf97de1154d95b47be6d4cf596
   - enabled: 1
+    path: Assets/Scenes/Contexts/Game/Game.UI.ParticleFX.unity
+    guid: 2b4ad3d900878d248a97c7e03c89cc0c
+  - enabled: 1
     path: Assets/Scenes/Contexts/Game/Game.UI.Background.unity
     guid: 540d755e8e32fd840acdb7f79be1307a
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Contexts/MainMenu/MainMenu.Core.unity
     guid: ddc746c4c74d4114a8e64789e8935be4
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Contexts/MainMenu/MainMenu.UI.HUD.unity
     guid: eac50f2a6c01c534ba090bc926a23910
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Contexts/MainMenu/MainMenu.UI.Instructions.unity
     guid: 0eb6b94f6ed669745bea1f52fbba522a
+  - enabled: 1
+    path: Assets/Scenes/Contexts/MainMenu/MainMenu.UI.Background.unity
+    guid: 1a9df32355bd3734a973dd4d4d5ef47b
   m_configObjects: {}

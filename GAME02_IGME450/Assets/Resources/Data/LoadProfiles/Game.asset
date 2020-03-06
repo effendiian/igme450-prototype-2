@@ -16,4 +16,5 @@ MonoBehaviour:
   - Game.Plant
   - Game.UI.HUD
   - Game.UI.Pause
+  - Game.UI.ParticleFX
   - Game.UI.Background
