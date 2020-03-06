@@ -13,13 +13,14 @@ public class WaterCanBehavior : Challenge
     public GameObject water;    //Variable to hold water object
     private GameObject waterDrop;   //variable to hold the created water
     public float rotationControl;   //variable to hold the accleration needed to trigger the can
+    private bool rotationComplete;  //varibable to hold if the phone has been rotated once yet
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        rotationComplete = false;
     }
 
     // Update is called once per frame
@@ -28,8 +29,9 @@ public class WaterCanBehavior : Challenge
 
         //maybe change this to simply check phone oreientation instead of rate
 #if UNITY_EDITOR
-        if(Input.GetKeyDown(KeyCode.RightArrow))
+        if(Input.GetKeyDown(KeyCode.RightArrow) && !rotationComplete)
         {
+            rotationComplete = true;
             runTimer = true;
             SolvingChallenge();
         }
@@ -38,8 +40,9 @@ public class WaterCanBehavior : Challenge
 
         rotSpeed = Input.acceleration.x;
         //checking to see if the user tilts the phone
-        if (rotSpeed > rotationControl)
+        if (rotSpeed > rotationControl && !rotationComplete)
         {
+            rotationComplete = true;
             runTimer = true;
             SolvingChallenge();
         }
