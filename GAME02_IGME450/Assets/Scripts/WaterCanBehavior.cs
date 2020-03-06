@@ -111,12 +111,12 @@ public class WaterCanBehavior : Challenge
     //function to end the challenge
     private void FinishChallenge()
     {
+        this.Complete();
+
         //add fixing dirt color
         DestroyImmediate(dryPotCreated, true);
         DestroyImmediate(waterDrop, true);
 
-        this.Complete();
-
-        DestroyImmediate(this.gameObject, true);
+        Destroy(this.gameObject);
     }
 }

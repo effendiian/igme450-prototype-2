@@ -59,8 +59,7 @@ public class SwipeInput : MonoBehaviour
     private void EndSwipe()
     {
         Vector2 swipe = end - start;
-
-        Debug.Log(swipe.magnitude);
+        
         if (swipe.magnitude > minimumMagnitude)
         {
             foreach (var observer in observers)

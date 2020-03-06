@@ -106,4 +106,9 @@ public class GrowBehavior : MonoBehaviour
         //}
         //Debug.Log(timer);
     }
+
+    public bool HasBloomed()
+    {
+        return currentState == LifeState.Flower;
+    }
 }
