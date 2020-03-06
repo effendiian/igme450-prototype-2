@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Game
   m_EditorClassIdentifier: 
   scenes:
+  - Game.Plant
   - Game.UI.HUD
   - Game.UI.Pause
   - Game.UI.Background

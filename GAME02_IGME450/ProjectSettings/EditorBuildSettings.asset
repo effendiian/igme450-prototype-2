@@ -5,21 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
-    path: Assets/Scenes/Debug/ChallengeTester.unity
-    guid: 223bcf182704bfa4bb28d24ab11e5648
-  - enabled: 1
-    path: Assets/Scenes/Debug/ChallengeTesterWater.unity
-    guid: 26dc4cfa6335f9643b0d7217d95a037f
   - enabled: 1
     path: Assets/Scenes/Contexts/Game/Game.Core.unity
     guid: e546c3fb3da964d4e81994f895805d87
   - enabled: 1
-    path: Assets/Scenes/Contexts/Game/Game.UI.Background.unity
-    guid: 540d755e8e32fd840acdb7f79be1307a
+    path: Assets/Scenes/Contexts/Game/Game.Plant.unity
+    guid: 001bcdde76e63df49b3d1655c527e1ed
   - enabled: 1
     path: Assets/Scenes/Contexts/Game/Game.UI.HUD.unity
     guid: a384ca842f780a64a9ecf8fb5d7d2b01
@@ -27,12 +21,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Contexts/Game/Game.UI.Pause.unity
     guid: e71fd7bf97de1154d95b47be6d4cf596
   - enabled: 1
+    path: Assets/Scenes/Contexts/Game/Game.UI.Background.unity
+    guid: 540d755e8e32fd840acdb7f79be1307a
+  - enabled: 0
     path: Assets/Scenes/Contexts/MainMenu/MainMenu.Core.unity
     guid: ddc746c4c74d4114a8e64789e8935be4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Contexts/MainMenu/MainMenu.UI.HUD.unity
     guid: eac50f2a6c01c534ba090bc926a23910
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Contexts/MainMenu/MainMenu.UI.Instructions.unity
     guid: 0eb6b94f6ed669745bea1f52fbba522a
   m_configObjects: {}

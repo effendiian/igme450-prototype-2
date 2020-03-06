@@ -14,8 +14,8 @@ public class SceneController : MonoBehaviour
     /// StateMachine reference.
     /// </summary>
     [SerializeField, ReadOnly]
-    private StateMachine engine;
-
+    protected StateMachine engine;
+    
     /// <summary>
     /// Load listed scenes additively.
     /// </summary>
@@ -30,9 +30,6 @@ public class SceneController : MonoBehaviour
         // Initialize the GameManager instance.
         GameManager.Instance.DoNothing();
 
-        // Initialize the CameraManager instance.
-        CameraManager.Instance.DoNothing();
-
         // Ensure state machine component exists.
         this.engine = gameObject.GetOrAddComponent<StateMachine>();
     }
@@ -40,7 +37,7 @@ public class SceneController : MonoBehaviour
     /// <summary>
     /// Start the engine.
     /// </summary>
-    private void Start()
+    protected virtual void Start()
     {
         // Load the scenes in the profile additively.
         if (profile) {
@@ -55,7 +52,7 @@ public class SceneController : MonoBehaviour
     /// <summary>
     /// Update the scene controller.
     /// </summary>
-    public void Update()
+    public virtual void Update()
     {
         if (!this.engine.IsDone)
         {

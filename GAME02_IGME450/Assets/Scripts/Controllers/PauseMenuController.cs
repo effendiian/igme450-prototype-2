@@ -6,6 +6,9 @@ using NaughtyAttributes;
 
 public class PauseMenuController : ModalController
 {
+
+    public static PauseMenuController Instance { get; private set; }
+
     /// <summary>
     /// Pause flag.
     /// </summary>
@@ -15,6 +18,17 @@ public class PauseMenuController : ModalController
     /// Close the modal menu.
     /// </summary>
     public void Resume() => this.CloseModal();
+
+    public void Awake()
+    {
+        if (!PauseMenuController.Instance)
+        {
+            PauseMenuController.Instance = this;
+        } else
+        {
+            Destroy(this);
+        }
+    }
 
     /// <summary>
     /// Go to the main menu.
