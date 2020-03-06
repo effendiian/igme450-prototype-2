@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 public class ChallengeCreator : MonoBehaviour
 {
     public List<GameObject> challenges;
+    public List<int> challengeProbabilities = new List<int>();
     public GameObject canvas;
     public int chance = 80;
 
@@ -21,6 +22,8 @@ public class ChallengeCreator : MonoBehaviour
     float time = 0;
     float buffer = 0;
 
+    private int activeChallenges = 0;
+
 
     // Start is called before the first frame update
     void Start()
@@ -30,13 +33,31 @@ public class ChallengeCreator : MonoBehaviour
             challengeTypes.Add(challenges[i].GetComponent<Challenge>().GetType());
             availableChallenges.Add(i);
         }
+
+        //Set up base probabilites if there are none specified
+        if (challengeProbabilities.Count < challenges.Count)
+        {
+            int countToAdd = (challenges.Count - challengeProbabilities.Count);
+            for (int i = 0; i < countToAdd; i++)
+            {
+                challengeProbabilities.Add(chance);
+            }
+        }
     }
 
     private void FixedUpdate()
     {
-        if (Random.Range(0, chance) == 0)
+        if (!flower.HasBloomed() && availableChallenges.Count > 0 && buffer <= 0)
         {
-            CreateChallenge();
+            for (int i = 0; i < availableChallenges.Count; i++)
+            {
+                int num = availableChallenges[i];
+                if (Random.Range(0, challengeProbabilities[num]) == 0)
+                {
+                    CreateChallenge(num);
+                    break;
+                }
+            }
         }
     }
 
@@ -46,27 +67,19 @@ public class ChallengeCreator : MonoBehaviour
         time += Time.deltaTime;
         buffer -= Time.deltaTime;
         
-        if (time > 10)
+        if (!flower.HasBloomed() && time > 10)
         {
-            CreateChallenge();
+            CreateChallenge(Random.Range(0, availableChallenges.Count));
         } 
     }
 
-    private void CreateChallenge()
+    private void CreateChallenge(int num)
     {
-        //For now don't allow multiple challenges at once
-        if (availableChallenges.Count == 0 || buffer > 0)
-        {
-            return;
-        }
-
         time = 0;
 
-        int rand = Random.Range(0, availableChallenges.Count);
-        int choice = availableChallenges[rand];
-        availableChallenges.Remove(choice);
+        availableChallenges.Remove(num);
 
-        GameObject newChallenge = Instantiate(challenges[choice]);
+        GameObject newChallenge = Instantiate(challenges[num]);
         newChallenge.transform.SetParent(canvas.transform, false);
 
         Challenge script = newChallenge.GetComponent<Challenge>();
@@ -79,14 +92,23 @@ public class ChallengeCreator : MonoBehaviour
 
     public void ActivateChallenge()
     {
+        activeChallenges += 1;
+        Debug.Log(activeChallenges);
+
         if (flower)
             flower.challengeActive = true;
     }
 
-    public void CompleteChallenge(Challenge challenge)
+    public void CompleteChallenge(Challenge challenge, bool wasActive)
     {
         //TODO: Remove if check when flower is set up
-        if (flower)
+        if (wasActive)
+        {
+            activeChallenges -= 1;
+            Debug.Log(activeChallenges);
+        }
+
+        if (activeChallenges == 0 && flower)
             flower.challengeActive = false;
 
         for (int i = 0; i < challengeTypes.Count; i++)
