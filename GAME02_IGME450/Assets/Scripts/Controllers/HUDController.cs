@@ -126,6 +126,7 @@ public class HUDEndState : HUDShowButtonState
     public override void Enter()
     {
         base.Enter();
+        HUDController.Instance.IsPaused = true;
         HUDController.Instance.IsRestartPending = true;
     }
 
@@ -134,6 +135,7 @@ public class HUDEndState : HUDShowButtonState
     /// </summary>
     public override void Exit()
     {
+        HUDController.Instance.IsPaused = false;
         HUDController.Instance.IsRestartPending = false;
         base.Exit();
     }
@@ -172,6 +174,12 @@ public class HUDController : MonoBehaviour
     private GameObject canvasObject;
 
     /// <summary>
+    /// Command object. Reveal.
+    /// </summary>
+    [SerializeField, Required, BoxGroup("Canvas References")]
+    private GameObject command;
+
+    /// <summary>
     /// Button from the UI.
     /// </summary>
     [SerializeField, Required, BoxGroup("Canvas References")]
@@ -195,6 +203,11 @@ public class HUDController : MonoBehaviour
     public bool IsPaused { get; set; }
 
     /// <summary>
+    /// Check if seed planted.
+    /// </summary>
+    public bool IsSeedPlanted { get; set; }
+
+    /// <summary>
     /// Is restart pending?
     /// </summary>
     public bool IsRestartPending { get; set; }
@@ -213,8 +226,10 @@ public class HUDController : MonoBehaviour
             HUDController.Instance = this;
             this.engine = gameObject.GetOrAddComponent<StateMachine>();
             this.IsPaused = false;
+            this.IsSeedPlanted = false;
             this.IsRestartPending = false;
-
+            this.DisplayCommand(false);
+            
             // Prepare states.
             this.idleState = new HUDShowButtonState(this.engine, this.seedButton, this.pauseButton);
             this.gameState = new HUDShowButtonState(this.engine, this.pauseButton);
@@ -290,5 +305,32 @@ public class HUDController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Plant seed.
+    /// </summary>
+    [Button("Plant Seed")]
+    public void PlantSeed()
+    {
+        if(!this.IsPaused && !this.IsSeedPlanted)
+        {
+            this.IsSeedPlanted = true;
+            this.engine.ChangeState(this.gameState);
+        }
+    }
+
+    /// <summary>
+    /// Display the command string.
+    /// </summary>
+    /// <param name="flag">Value to set.</param>
+    public void DisplayCommand(bool flag) => this.command.SetActive(flag);
+
+    /// <summary>
+    /// Flower bloomed. 
+    /// </summary>
+    [Button("Make Restart Pending")]
+    public void PendRestart()
+    {
+        this.engine.ChangeState(this.endState);
+    }
 
 }

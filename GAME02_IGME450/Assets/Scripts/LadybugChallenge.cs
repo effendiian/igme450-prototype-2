@@ -78,31 +78,34 @@ public class LadybugChallenge : Challenge
     // Update is called once per frame
     void Update()
     {
-        switch (state)
+        if (!HUDController.Instance.IsPaused)
         {
-            case LadybugState.Entering:
-                Move(true, enteringSpeed);
+            switch (state)
+            {
+                case LadybugState.Entering:
+                    Move(true, enteringSpeed);
 
-                if (Mathf.Abs(transform.position.x - finalDestination.x) < 25 &&
-                    (transform.position.y < flowerRect.sizeDelta.y + flowerRect.transform.position.y && transform.position.y > flowerRect.transform.position.y))
-                {
-                    state = LadybugState.Sitting;
-                    Activate();
-                }
-                break;
-            case LadybugState.Blowing:
-                if (IsOffScreen())
-                {
-                    this.Complete();
-                    Destroy(this.gameObject);
-                }
-                else if (timeTraveled > blowTime)
-                {
-                    state = LadybugState.Entering;
-                }
+                    if (Mathf.Abs(transform.position.x - finalDestination.x) < 25 &&
+                        (transform.position.y < flowerRect.sizeDelta.y + flowerRect.transform.position.y && transform.position.y > flowerRect.transform.position.y))
+                    {
+                        state = LadybugState.Sitting;
+                        Activate();
+                    }
+                    break;
+                case LadybugState.Blowing:
+                    if (IsOffScreen())
+                    {
+                        this.Complete();
+                        Destroy(this.gameObject);
+                    }
+                    else if (timeTraveled > blowTime)
+                    {
+                        state = LadybugState.Entering;
+                    }
 
-                Blow();
-                break;
+                    Blow();
+                    break;
+            }
         }
     }
 

@@ -74,26 +74,29 @@ public class FlyChallenge : Challenge
     // Update is called once per frame
     void Update()
     {
-        switch (state)
+        if (!HUDController.Instance.IsPaused)
         {
-            case FlyState.Entering:
-                Move(true, enteringSpeed);
+            switch (state)
+            {
+                case FlyState.Entering:
+                    Move(true, enteringSpeed);
 
-                if (Mathf.Abs(transform.position.x - finalDestination.x) < 25 && 
-                    (transform.position.y < flowerRect.sizeDelta.y + flowerRect.transform.position.y && transform.position.y > flowerRect.transform.position.y))
-                {
-                    state = FlyState.Sitting;
-                    Activate();
-                }
-                break;
-            case FlyState.Leaving:
-                Move(false, leavingSpeed);
+                    if (Mathf.Abs(transform.position.x - finalDestination.x) < 25 &&
+                        (transform.position.y < flowerRect.sizeDelta.y + flowerRect.transform.position.y && transform.position.y > flowerRect.transform.position.y))
+                    {
+                        state = FlyState.Sitting;
+                        Activate();
+                    }
+                    break;
+                case FlyState.Leaving:
+                    Move(false, leavingSpeed);
 
-                if (IsOffScreen())
-                {
-                    Destroy(this.gameObject);
-                }
-                break;
+                    if (IsOffScreen())
+                    {
+                        Destroy(this.gameObject);
+                    }
+                    break;
+            }
         }
     }
 

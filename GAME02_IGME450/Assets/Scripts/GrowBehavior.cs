@@ -5,9 +5,11 @@ using UnityEngine;
 public class GrowBehavior : MonoBehaviour
 {
     //variables
+    bool isPaused;
     float timer;    //float to keep track of how much time has passed
     enum LifeState  //enum to hold the life cycle of the plant
     {
+        None, // Not planted yet.
         Seed,
         Sapling,
         Plant,
@@ -27,7 +29,7 @@ public class GrowBehavior : MonoBehaviour
     void Start()
     {
         timer = 0;
-        currentState = LifeState.Seed;
+        currentState = LifeState.None;
         challengeActive = false;
 
         stalk = this.GetComponent<RectTransform>();
@@ -42,7 +44,9 @@ public class GrowBehavior : MonoBehaviour
 
     public void FlowerGrow(bool challengeInProgress)
     {
-        if(!challengeInProgress)
+        this.isPaused = HUDController.Instance ? HUDController.Instance.IsPaused : false;
+
+        if(!challengeInProgress && !this.isPaused)
         {
             timer += Time.deltaTime;
         } else
@@ -52,6 +56,16 @@ public class GrowBehavior : MonoBehaviour
 
         switch(currentState)
         {
+            case LifeState.None:
+                if (HUDController.Instance)
+                {
+                    if (HUDController.Instance.IsSeedPlanted)
+                    {
+                        currentState = LifeState.Seed;
+                        HUDController.Instance.DisplayCommand(true);
+                    }
+                }
+                break;
             case LifeState.Seed:
                 if (timer > 5)
                 {
@@ -95,6 +109,7 @@ public class GrowBehavior : MonoBehaviour
                 }
                 break;
             case LifeState.Flower:
+                HUDController.Instance.PendRestart();
                 break;
         }
 

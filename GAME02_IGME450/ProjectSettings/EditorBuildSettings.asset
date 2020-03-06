@@ -21,9 +21,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Contexts/Game/Game.UI.Pause.unity
     guid: e71fd7bf97de1154d95b47be6d4cf596
   - enabled: 1
-    path: Assets/Scenes/Contexts/Game/Game.UI.ParticleFX.unity
-    guid: 2b4ad3d900878d248a97c7e03c89cc0c
-  - enabled: 1
     path: Assets/Scenes/Contexts/Game/Game.UI.Background.unity
     guid: 540d755e8e32fd840acdb7f79be1307a
   - enabled: 1

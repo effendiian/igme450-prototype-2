@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasObject: {fileID: 1747324934}
+  command: {fileID: 1747324938}
   seedButton: {fileID: 1747324935}
   pauseButton: {fileID: 1747324937}
   restartButton: {fileID: 1747324936}
@@ -258,6 +259,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PauseApplication
       objectReference: {fileID: 0}
+    - target: {fileID: 245089129115491373, guid: f159452b3742a2346abde6fe719bcbd0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 245089130317164638, guid: f159452b3742a2346abde6fe719bcbd0,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -288,6 +294,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: RestartApplication
       objectReference: {fileID: 0}
+    - target: {fileID: 1879766536025741797, guid: f159452b3742a2346abde6fe719bcbd0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1879766537521018262, guid: f159452b3742a2346abde6fe719bcbd0,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -316,7 +327,12 @@ PrefabInstance:
     - target: {fileID: 2821036281340164392, guid: f159452b3742a2346abde6fe719bcbd0,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RestartApplication
+      value: PlantSeed
+      objectReference: {fileID: 0}
+    - target: {fileID: 2821036281340164398, guid: f159452b3742a2346abde6fe719bcbd0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2821036282789287261, guid: f159452b3742a2346abde6fe719bcbd0,
         type: 3}
@@ -547,6 +563,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1747324938 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6727901403346671219, guid: f159452b3742a2346abde6fe719bcbd0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1747324933}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2056389191
 GameObject:
   m_ObjectHideFlags: 0

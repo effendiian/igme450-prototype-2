@@ -67,16 +67,19 @@ public class ChallengeCreator : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!flower.HasBloomed() && availableChallenges.Count > 0 && buffer <= 0)
+        if (!HUDController.Instance || !HUDController.Instance.IsPaused)
         {
-            bool roll = this.Roll();
-            for (int i = 0; i < availableChallenges.Count; i++)
+            if (!flower.HasBloomed() && availableChallenges.Count > 0 && buffer <= 0)
             {
-                int num = availableChallenges[i];
-                if (roll && challenges[num].Roll())
+                bool roll = this.Roll();
+                for (int i = 0; i < availableChallenges.Count; i++)
                 {
-                    CreateChallenge(num);
-                    break;
+                    int num = availableChallenges[i];
+                    if (roll && challenges[num].Roll())
+                    {
+                        CreateChallenge(num);
+                        break;
+                    }
                 }
             }
         }
@@ -85,13 +88,16 @@ public class ChallengeCreator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
-        buffer -= Time.deltaTime;
-        
-        if (!flower.HasBloomed() && time > 10)
+        if (!HUDController.Instance || !HUDController.Instance.IsPaused)
         {
-            CreateChallenge(Random.Range(0, availableChallenges.Count));
-        } 
+            time += Time.deltaTime;
+            buffer -= Time.deltaTime;
+
+            if (!flower.HasBloomed() && time > 7)
+            {
+                CreateChallenge(Random.Range(0, availableChallenges.Count));
+            }
+        }
     }
 
     private void CreateChallenge(int num)

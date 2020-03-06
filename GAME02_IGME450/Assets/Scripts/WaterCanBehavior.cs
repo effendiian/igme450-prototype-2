@@ -26,15 +26,17 @@ public class WaterCanBehavior : Challenge
     // Update is called once per frame
     void Update()
     {
-
-        //maybe change this to simply check phone oreientation instead of rate
-#if UNITY_EDITOR
-        if(Input.GetKeyDown(KeyCode.RightArrow) && !rotationComplete)
+        if (!HUDController.Instance.IsPaused)
         {
-            rotationComplete = true;
-            runTimer = true;
-            SolvingChallenge();
-        }
+
+            //maybe change this to simply check phone oreientation instead of rate
+#if UNITY_EDITOR
+            if (Input.GetKeyDown(KeyCode.RightArrow) && !rotationComplete)
+            {
+                rotationComplete = true;
+                runTimer = true;
+                SolvingChallenge();
+            }
 #else
         //might have to adjust rotation control number to make it more or less sensitive 
 
@@ -66,18 +68,19 @@ public class WaterCanBehavior : Challenge
 
 
 
-        //if the bool is true, incrmenting the timer
-        if (runTimer)
-        {
-            pourTimer += Time.deltaTime;
-        }
+            //if the bool is true, incrmenting the timer
+            if (runTimer)
+            {
+                pourTimer += Time.deltaTime;
+            }
 
-        //if the timer reaches 4, finshing the challenge
-        if(pourTimer >= 4)
-        {
-            FinishChallenge();
-            runTimer = false;
-            pourTimer = 0;
+            //if the timer reaches 4, finshing the challenge
+            if (pourTimer >= 4)
+            {
+                FinishChallenge();
+                runTimer = false;
+                pourTimer = 0;
+            }
         }
     }
 
