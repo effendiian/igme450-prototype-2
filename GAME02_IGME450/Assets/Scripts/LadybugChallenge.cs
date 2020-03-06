@@ -93,6 +93,7 @@ public class LadybugChallenge : Challenge
             case LadybugState.Blowing:
                 if (IsOffScreen())
                 {
+                    this.Complete();
                     Destroy(this.gameObject);
                 }
                 else if (timeTraveled > blowTime)
@@ -154,7 +155,12 @@ public class LadybugChallenge : Challenge
     {
         if (IsOnScreen())
         {
-            this.Complete();
+            if (state == LadybugState.Sitting)
+            {
+                this.Complete();
+                this.wasActivated = false;
+            }
+
             state = LadybugState.Blowing;
             blowDirection = Quaternion.Euler(0, 0, Random.Range(-5, 5)) * swipe.normalized;
             blowTime += 1f;
