@@ -344,7 +344,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 720, y: 1280}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0.6
+  m_MatchWidthOrHeight: 0.779
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -358,7 +358,7 @@ Canvas:
   m_GameObject: {fileID: 517130297}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 356916286}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -368,7 +368,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &517130301
 RectTransform:
@@ -522,12 +522,12 @@ PrefabInstance:
     - target: {fileID: 3196940732109405861, guid: 9b6fb8a7b6ec55c4b871c77fb3156fb8,
         type: 3}
       propertyPath: rollChance
-      value: 0.977
+      value: 0.99
       objectReference: {fileID: 0}
     - target: {fileID: 3196940732109405861, guid: 9b6fb8a7b6ec55c4b871c77fb3156fb8,
         type: 3}
       propertyPath: challenges.Array.data[2].probability
-      value: 0.616
+      value: 0.875
       objectReference: {fileID: 0}
     - target: {fileID: 3196940732109405861, guid: 9b6fb8a7b6ec55c4b871c77fb3156fb8,
         type: 3}
@@ -537,7 +537,7 @@ PrefabInstance:
     - target: {fileID: 3196940732109405861, guid: 9b6fb8a7b6ec55c4b871c77fb3156fb8,
         type: 3}
       propertyPath: challenges.Array.data[0].probability
-      value: 0.954
+      value: 0.989
       objectReference: {fileID: 0}
     - target: {fileID: 7712759009706366119, guid: 9b6fb8a7b6ec55c4b871c77fb3156fb8,
         type: 3}

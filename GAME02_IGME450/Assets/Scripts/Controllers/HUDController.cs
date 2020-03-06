@@ -281,6 +281,7 @@ public class HUDController : MonoBehaviour
         if (PauseMenuController.Instance && this.IsPaused)
         {
             this.engine.PopState();
+            PauseMenuController.Instance.Resume();
             Debug.Log("Resume application.");
         }
         else

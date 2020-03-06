@@ -35,8 +35,7 @@ public class PauseMenuController : ModalController
     /// </summary>
     public void MainMenu()
     {
-        // TODO.
-        this.Close();
+        this.StartCoroutine(GameManager.Instance.LoadScene("MainMenu.Core"));
     }
 
     /// <summary>
@@ -44,10 +43,7 @@ public class PauseMenuController : ModalController
     /// </summary>
     public void Quit()
     {
-        if (this.IsPaused)
-        {
-            GameManager.Instance.Quit();
-        }
+        GameManager.Instance.Quit();
     }
 
 }
