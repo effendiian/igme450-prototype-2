@@ -5,9 +5,11 @@ using UnityEngine;
 public class GrowBehavior : MonoBehaviour
 {
     //variables
+    bool isPaused;
     float timer;    //float to keep track of how much time has passed
     enum LifeState  //enum to hold the life cycle of the plant
     {
+        None, // Not planted yet.
         Seed,
         Sapling,
         Plant,
@@ -16,7 +18,8 @@ public class GrowBehavior : MonoBehaviour
     LifeState currentState; //LifeState to hold where the plant currently is in the life cycle
     public bool challengeActive;    //bool to hold whether there is an active challenge or not
 
-    float maxHeight = 350f;
+    float maxHeight = 525f;
+    float width = 22.5f;
     RectTransform stalk;
     public GameObject bulb;
     public GameObject bloom;
@@ -26,7 +29,7 @@ public class GrowBehavior : MonoBehaviour
     void Start()
     {
         timer = 0;
-        currentState = LifeState.Seed;
+        currentState = LifeState.None;
         challengeActive = false;
 
         stalk = this.GetComponent<RectTransform>();
@@ -41,7 +44,9 @@ public class GrowBehavior : MonoBehaviour
 
     public void FlowerGrow(bool challengeInProgress)
     {
-        if(!challengeInProgress)
+        this.isPaused = HUDController.Instance ? HUDController.Instance.IsPaused : false;
+
+        if(!challengeInProgress && !this.isPaused)
         {
             timer += Time.deltaTime;
         } else
@@ -51,6 +56,16 @@ public class GrowBehavior : MonoBehaviour
 
         switch(currentState)
         {
+            case LifeState.None:
+                if (HUDController.Instance)
+                {
+                    if (HUDController.Instance.IsSeedPlanted)
+                    {
+                        currentState = LifeState.Seed;
+                        HUDController.Instance.DisplayCommand(true);
+                    }
+                }
+                break;
             case LifeState.Seed:
                 if (timer > 5)
                 {
@@ -59,7 +74,8 @@ public class GrowBehavior : MonoBehaviour
                 }
                 else
                 {
-                    float size = 5 + (timer / 5) * 10;
+                    float baseSize = 5f;
+                    float size = baseSize + (timer / 5) * (width - baseSize);
                     stalk.sizeDelta = new Vector2(size, size);
                 }
                 break;
@@ -67,14 +83,14 @@ public class GrowBehavior : MonoBehaviour
                 if (timer > 20)
                 {
                     timer = 0;
-                    stalk.sizeDelta = new Vector2(15, maxHeight);
+                    stalk.sizeDelta = new Vector2(width, maxHeight);
                     currentState++;
 
                     bulb.transform.localScale = new Vector3(0, 0, 1);
                     bulb.SetActive(true);
                 } else
                 {
-                    stalk.sizeDelta = new Vector2(15, ((timer / 20) * (maxHeight - 15)) + 15);
+                    stalk.sizeDelta = new Vector2(width, ((timer / 20) * (maxHeight - width)) + width);
                 }
                 break;
             case LifeState.Plant:
@@ -93,6 +109,7 @@ public class GrowBehavior : MonoBehaviour
                 }
                 break;
             case LifeState.Flower:
+                HUDController.Instance.PendRestart();
                 break;
         }
 
@@ -103,5 +120,10 @@ public class GrowBehavior : MonoBehaviour
         //    currentState++;
         //}
         //Debug.Log(timer);
+    }
+
+    public bool HasBloomed()
+    {
+        return currentState == LifeState.Flower;
     }
 }

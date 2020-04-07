@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+#if UNITY_EDITOR
+using UnityEditor.SceneManagement;
+#endif
 using MHO.Extensions;
 
 /// <summary>
@@ -9,27 +12,19 @@ using MHO.Extensions;
 /// </summary>
 public class GameManager : Manager<GameManager>
 {
-
+    
     /// <summary>
     /// Allow inheritance but reject constructor calls for this class.
     /// </summary>
     protected GameManager() { }
-
-    /// <summary>
-    /// Reference to the Globals component.
-    /// </summary>
-    public Globals Globals { get; protected set; }
-
+    
     /// <summary>
     /// Setup the Manager class.
     /// </summary>
     protected override void Setup()
     {
-        // Get or add a new component of type Globals.
-        this.Globals = this.gameObject.GetOrAddComponent<Globals>();
-        this.Globals.Setup();
     }
-
+    
     /// <summary>
     /// Quit the application.
     /// </summary>
@@ -50,8 +45,13 @@ public class GameManager : Manager<GameManager>
     /// <returns>Returns enumerator.</returns>
     public IEnumerator LoadSceneAdditive(string scene)
     {
+#if UNITY_EDITOR
+        // Yield return the loaded scene operation.
+        yield return EditorSceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
+#else
         // Yield return the loaded scene operation.
         yield return SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
+#endif
     }
 
     /// <summary>
@@ -61,7 +61,12 @@ public class GameManager : Manager<GameManager>
     /// <returns>Returns enumerator.</returns>
     public IEnumerator LoadScene(string scene)
     {
-        yield return SceneManager.LoadSceneAsync(scene, LoadSceneMode.Single);
+#if UNITY_EDITOR
+        EditorSceneManager.LoadScene(scene, LoadSceneMode.Single);
+#else
+        SceneManager.LoadScene(scene, LoadSceneMode.Single);
+#endif
+        yield return null;
     }
 
 

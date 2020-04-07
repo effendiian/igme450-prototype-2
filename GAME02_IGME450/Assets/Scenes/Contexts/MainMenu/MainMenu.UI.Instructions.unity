@@ -120,6 +120,162 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &155043834 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6727901403448370120, guid: 74878bd050434474ab1589eab65c5660,
+    type: 3}
+  m_PrefabInstance: {fileID: 6727901403598660658}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &298962364
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 298962365}
+  - component: {fileID: 298962366}
+  m_Layer: 0
+  m_Name: InstructionsController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &298962365
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298962364}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &298962366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298962364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d90ce8b4b54822468b7a04762f32345, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  content:
+    Title: bloom.
+    Body: 'A new gardener must follow these rules while taking care of a houseplant.
+
+
+      1. <color=green>Tap <color=white>on the flies in order to make them flee.
+
+
+      2. <color=purple>Swipe <color=white>over ladybugs in order to blow them away.
+
+
+      3. <color=blue>Tilt <color=white> your device when the water can appears in
+      order to hydrate the soil.'
+  canvasRevealer:
+    canvasObject: {fileID: 1377838621}
+  title: {fileID: 319631939}
+  body: {fileID: 155043834}
+--- !u!114 &319631939 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6727901403346671217, guid: 74878bd050434474ab1589eab65c5660,
+    type: 3}
+  m_PrefabInstance: {fileID: 6727901403598660658}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1106147632
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1106147635}
+  - component: {fileID: 1106147634}
+  - component: {fileID: 1106147633}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1106147633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106147632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &1106147634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106147632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!4 &1106147635
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106147632}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1377838621 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6727901404439609903, guid: 74878bd050434474ab1589eab65c5660,
+    type: 3}
+  m_PrefabInstance: {fileID: 6727901403598660658}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2015245413
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,10 +287,10 @@ GameObject:
   - component: {fileID: 2015245416}
   - component: {fileID: 2015245415}
   - component: {fileID: 2015245414}
-  - component: {fileID: 2015245418}
+  - component: {fileID: 2015245417}
   m_Layer: 0
-  m_Name: UI Camera
-  m_TagString: UICamera
+  m_Name: (Editor) UI Camera
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -157,7 +313,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.8, g: 0.05490196, b: 0.45490196, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -204,7 +360,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2015245418
+--- !u!114 &2015245417
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -213,7 +369,277 @@ MonoBehaviour:
   m_GameObject: {fileID: 2015245413}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc5403d7d93cb694a8a43bb6128bd3b8, type: 3}
+  m_Script: {fileID: 11500000, guid: 135c9ccce856c2d4abd50b7374f0a0b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraRef: {fileID: 0}
+  _ignore: 0
+  _debugCamera: {fileID: 2015245415}
+--- !u!1001 &6727901403598660658
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6727901403072672939, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901403072672939, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.05490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901403072672939, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.45490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901403072672939, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4285796044
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901403346671217, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901403346671217, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901403346671217, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901403346671217, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901403448370120, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.4745098
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901403448370120, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.047058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901403448370120, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.3529412
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901403448370120, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4284091513
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901403448370120, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_text
+      value: 'A new gardener must follow these rules while taking care of a houseplant.
+
+
+        1. <color=#216353>Tap</color> on the flies in order to make them flee.
+
+
+        2. <color=#D63447>Swipe</color> over ladybugs in order to blow them away.
+
+
+        3. <color=blue>Tilt</color> your device when the water can appears in order
+        to hydrate the soil.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901403448370120, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 252
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901403448370120, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 51
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901403448370120, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 51
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901403712297182, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 298962366}
+    - target: {fileID: 6727901403712297183, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.69803923
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901403712297183, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.654902
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901403712297183, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901404439609875, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901404439609875, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901404439609875, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901404439609875, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901404439609875, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901404439609875, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901404439609875, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901404439609875, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901404439609875, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901404439609875, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901404439609875, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901404439609875, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901404439609875, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901404439609875, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901404439609875, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901404439609875, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901404439609875, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901404439609875, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901404439609875, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901404439609875, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901404439609875, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901404439609903, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_Name
+      value: Instructions (Canvas)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901404439609903, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901404708716274, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901404708716274, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.69803923
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901404708716274, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.654902
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901404708716274, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901404708716274, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901404708716274, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6727901404708716274, guid: 74878bd050434474ab1589eab65c5660,
+        type: 3}
+      propertyPath: m_FillCenter
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 74878bd050434474ab1589eab65c5660, type: 3}

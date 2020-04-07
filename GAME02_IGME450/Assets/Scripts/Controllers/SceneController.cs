@@ -14,13 +14,13 @@ public class SceneController : MonoBehaviour
     /// StateMachine reference.
     /// </summary>
     [SerializeField, ReadOnly]
-    private StateMachine engine;
-
+    protected StateMachine engine;
+    
     /// <summary>
     /// Load listed scenes additively.
     /// </summary>
     [SerializeField]
-    private SceneLoadProfile profile;
+    private SceneLoadProfile profile = null;
 
     /// <summary>
     /// On Awake, initialize the scene's dependencies.
@@ -28,10 +28,7 @@ public class SceneController : MonoBehaviour
     private void Awake()
     {
         // Initialize the GameManager instance.
-        GameManager.Instance.DoNothing();
-
-        // Initialize the CameraManager instance.
-        CameraManager.Instance.DoNothing();
+        if (GameManager.Instance) { GameManager.Instance.DoNothing(); }
 
         // Ensure state machine component exists.
         this.engine = gameObject.GetOrAddComponent<StateMachine>();
@@ -40,7 +37,7 @@ public class SceneController : MonoBehaviour
     /// <summary>
     /// Start the engine.
     /// </summary>
-    private void Start()
+    protected virtual void Start()
     {
         // Load the scenes in the profile additively.
         if (profile) {
@@ -55,7 +52,7 @@ public class SceneController : MonoBehaviour
     /// <summary>
     /// Update the scene controller.
     /// </summary>
-    public void Update()
+    public virtual void Update()
     {
         if (!this.engine.IsDone)
         {
@@ -64,14 +61,8 @@ public class SceneController : MonoBehaviour
 
             // Update the current state.
             this.engine.CurrentState.Update();
-
-            // On press of the space key, exit the game.
-            if (Input.GetKey(KeyCode.Space))
-            {
-                this.engine.PopState();
-                Debug.Log("Popping state!");
-            }
-        } else
+        }
+        else
         {
             Debug.Log($"Done! {this.engine.CurrentState}");
         }

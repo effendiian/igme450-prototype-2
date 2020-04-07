@@ -39,3 +39,13 @@ Once you've pushed your changes to your forked repository, you can create a [new
 ## License ##
 
 This project is licensed under the MIT license. Read the [LICENSE file](./LICENSE) for more details.
+
+## Attributions ##
+
+This project uses the following resources:
+
+[Abril Fatface](https://fonts.google.com/specimen/Abril+Fatface) - A font by [TypeTogether](http://www.type-together.com/).
+[Fredericka the Great](https://fonts.google.com/specimen/Fredericka+the+Great) - A font by Crystal Kluge of Tart Workshop.
+[Bush](https://www.toptal.com/designers/subtlepatterns/bush-pattern/) - A [subtle pattern](https://www.toptal.com/designers/subtlepatterns/bush-pattern/) texture by [Tomislava Babić](https://behance.net/antitomi).
+[Unity](https://unity.com/)
+Assorted Unity tutorials from [Ray Wenderlich and Co](https://www.raywenderlich.com/).

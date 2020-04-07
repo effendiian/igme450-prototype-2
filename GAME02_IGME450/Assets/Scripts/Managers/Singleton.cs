@@ -10,12 +10,7 @@ using MHO.Extensions;
 /// <typeparam name="T">MonoBehaviour that inherits this class.</typeparam>
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
-
-    /// <summary>
-    /// If set to delete, prevent access.
-    /// </summary>
-    private static bool m_Garbage = false;
-
+    
     /// <summary>
     /// Thread lock object.
     /// </summary>
@@ -38,11 +33,6 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         get
         {
-            if(m_Garbage)
-            {
-                Debug.LogWarning($"[Singleton] Instance '{typeof(T)}' already destroyed. Returning null.");
-                return null;
-            }
 
             if (!m_Manager)
             {
@@ -114,15 +104,5 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
             return $"'{typeof(T)}' [Singleton]";
         }
     }
-
-    /// <summary>
-    /// Flag as inaccessible once quitting.
-    /// </summary>
-    private void OnApplicationQuit() => m_Garbage = true;
-
-    /// <summary>
-    /// Flag as inaccessible once destroying.
-    /// </summary>
-    private void OnDestroy() => m_Garbage = true;
-    
+            
 }

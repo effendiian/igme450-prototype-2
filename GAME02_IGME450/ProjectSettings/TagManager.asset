@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Manager
   - UICamera
+  - VisualEffect
+  - Fly
+  - Ladybug
   layers:
   - Default
   - TransparentFX

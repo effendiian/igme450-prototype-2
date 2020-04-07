@@ -44,4 +44,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   challenges:
-  - {fileID: 1371634333049713729, guid: 7bb9a427aafd145419680f100465a5c5, type: 3}
+  - host: {fileID: 1371634333049713729, guid: 7bb9a427aafd145419680f100465a5c5, type: 3}
+    probability: 0.8
+  - host: {fileID: 7844195112639234901, guid: 131f2a0ec79f18b45b4cef3d117e2035, type: 3}
+    probability: 0.8
+  - host: {fileID: 7752961459324636439, guid: c651a0bd81ffe6e4cb7471c1ceb9c066, type: 3}
+    probability: 0.5
+  rollChance: 0.8
+  canvas: {fileID: 0}
+  flower: {fileID: 0}
+  flowerObject: {fileID: 0}
